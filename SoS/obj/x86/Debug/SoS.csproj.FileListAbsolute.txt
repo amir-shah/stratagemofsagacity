@@ -28,3 +28,5 @@ F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\TimesNewRoman.xnb
 F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\hellRaider.xnb
 F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\turtle.xnb
 F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\pShot.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\floor.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\tank.xnb
