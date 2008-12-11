@@ -80,9 +80,9 @@ namespace SoS
             spriteBatch = new SpriteBatch(GraphicsDevice);
             wallSprite = Content.Load<Texture2D>("box");
             pixel = Content.Load<Texture2D>("blankPixel");
-            background = Content.Load<Texture2D>("background");
+            background = Content.Load<Texture2D>("floor");
             mouseSprite = Content.Load<Texture2D>("crosshair");
-            enemySprite = Content.Load<Texture2D>("alienship");
+            enemySprite = Content.Load<Texture2D>("tank");
             playerSprite = Content.Load<Texture2D>("turtle");
             map = new Map(10000, 10000, background);
             List<Obstacle> walls = new List<Obstacle>();

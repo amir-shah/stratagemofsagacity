@@ -92,6 +92,24 @@
       <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\pShot.xnb</Output>
       <Time>2008-12-09T08:58:30-05:00</Time>
     </Item>
+    <Item>
+      <Source>floor.PNG</Source>
+      <Name>floor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\floor.xnb</Output>
+      <Time>2008-12-11T13:26:46-05:00</Time>
+    </Item>
+    <Item>
+      <Source>tank.png</Source>
+      <Name>tank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\tank.xnb</Output>
+      <Time>2008-12-11T13:37:56-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

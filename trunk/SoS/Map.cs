@@ -11,6 +11,7 @@ namespace SoS
         int width, height;
         Color backgroundColor = Color.Beige;
         Texture2D background;
+        Rectangle spriteRect;
         List<Obstacle> obs = new List<Obstacle>();
         public Map(int _width, int _height, Color _background)
         {
@@ -23,6 +24,7 @@ namespace SoS
             width = _width;
             height = _height;
             background = _background;
+            spriteRect = new Rectangle(0, 0, _background.Width, _background.Height);
         }
 
         public bool loadObstacles(List<Obstacle> obstacles)
