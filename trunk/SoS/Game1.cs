@@ -31,6 +31,7 @@ namespace SoS
         int miniNum = 3;
         Player player;
 
+
         List<Being> beings = new List<Being>();
         List<Projectile> projectiles = new List<Projectile>();
         
@@ -123,6 +124,13 @@ namespace SoS
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                if (stateMachine.getState() != pausedState)
+                    stateMachine.changeState(pausedState);
+                else
+                    stateMachine.changeState(playState);
+            }
             if (stateMachine.getState() == playState)
             {
                 int elapsedTime = (int)gameTime.ElapsedGameTime.TotalMilliseconds;
