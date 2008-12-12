@@ -39,6 +39,7 @@ namespace SoS
         int time = 1800; // 30 seconds
         const int menuState = 0, pausedState = 1, playState = 2, optionsState = 3, introState = 4;
         StateMachine stateMachine = new StateMachine(0);
+        bool pauseHeld = false;
         SpriteFont font;
         KeyboardState oldKeyState, newKeyState;
         Texture2D BG; //Background
@@ -126,11 +127,18 @@ namespace SoS
                 this.Exit();
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                if (stateMachine.getState() != pausedState)
+                if (stateMachine.getState() != pausedState && !pauseHeld)
                     stateMachine.changeState(pausedState);
-                else
-                    stateMachine.changeState(playState);
+                else if (stateMachine.getState() == pausedState && !pauseHeld)
+                    stateMachine.changeState(stateMachine.getPrevState());
+                pauseHeld = true;
+                /*if (stateMachine.getState() != pausedState && stateMachine.getPrevState() != pausedState)
+                    stateMachine.changeState(pausedState);
+                if 
+                    stateMachine.changeState(playState);*/
             }
+            else
+                pauseHeld = false;
             if (stateMachine.getState() == playState)
             {
                 int elapsedTime = (int)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -252,7 +260,7 @@ namespace SoS
                 Rectangle miniMap = new Rectangle((int)(WIDTH - (WIDTH / miniNum)), (int)(HEIGHT - (HEIGHT / miniNum)), (int)(WIDTH / miniNum), (int)(HEIGHT / miniNum));
                 spriteBatch.Begin();
                 map.draw(spriteBatch, camera);
-                
+
 
                 foreach (Being b in beings)
                 {
@@ -292,6 +300,16 @@ namespace SoS
                 }
                 spriteBatch.End();
             }
+                if (stateMachine.getState() == pausedState)
+                {
+                    String message = "PAUSED";
+                    Vector2 mSize = font.MeasureString(message);
+                    spriteBatch.Begin();
+                    spriteBatch.DrawString(font,message,new Vector2((WIDTH/2f)-mSize.X,(HEIGHT/2f)-mSize.Y),Color.White);
+                    spriteBatch.End();
+                }
+                
+            
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

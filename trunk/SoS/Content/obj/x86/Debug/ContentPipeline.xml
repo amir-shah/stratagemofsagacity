@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\box.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\box.xnb</Output>
       <Time>2008-10-28T23:26:14-04:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\blankPixel.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\blankPixel.xnb</Output>
       <Time>2008-11-22T16:08:08-05:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\background.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\background.xnb</Output>
       <Time>2008-11-22T16:41:54-05:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\crosshair.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\crosshair.xnb</Output>
       <Time>2008-11-11T09:03:36-05:00</Time>
     </Item>
     <Item>
@@ -43,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\alienship.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\alienship.xnb</Output>
       <Time>2008-11-24T22:18:00-05:00</Time>
     </Item>
     <Item>
@@ -52,26 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\bg.xnb</Output>
-      <Time>2008-11-24T23:27:46-05:00</Time>
-    </Item>
-    <Item>
-      <Source>TimesNewRoman.spritefont</Source>
-      <Name>TimesNewRoman</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\TimesNewRoman.xnb</Output>
-      <Time>2008-11-24T23:27:44-05:00</Time>
-    </Item>
-    <Item>
-      <Source>hellRaider.mp3</Source>
-      <Name>hellRaider</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\hellRaider.xnb</Output>
-      <Item>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\hellRaider.wma</Item>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\bg.xnb</Output>
       <Time>2008-11-24T23:27:46-05:00</Time>
     </Item>
     <Item>
@@ -80,7 +61,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\turtle.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\turtle.xnb</Output>
       <Time>2008-12-04T14:05:34-05:00</Time>
     </Item>
     <Item>
@@ -89,7 +70,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\pShot.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\pShot.xnb</Output>
       <Time>2008-12-09T08:58:30-05:00</Time>
     </Item>
     <Item>
@@ -98,7 +79,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\floor.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\floor.xnb</Output>
       <Time>2008-12-11T13:26:46-05:00</Time>
     </Item>
     <Item>
@@ -107,17 +88,36 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\tank.xnb</Output>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\tank.xnb</Output>
       <Time>2008-12-11T13:43:18-05:00</Time>
+    </Item>
+    <Item>
+      <Source>TimesNewRoman.spritefont</Source>
+      <Name>TimesNewRoman</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\TimesNewRoman.xnb</Output>
+      <Time>2008-11-24T23:27:44-05:00</Time>
+    </Item>
+    <Item>
+      <Source>hellRaider.mp3</Source>
+      <Name>hellRaider</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\hellRaider.xnb</Output>
+      <Item>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\hellRaider.wma</Item>
+      <Time>2008-11-24T23:27:46-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
-      <RootDirectory>F:\USB Drive\XNA\Projects\SoS\SoS\Content\</RootDirectory>
-      <LoggerRootDirectory>F:\USB Drive\XNA\Projects\SoS\SoS\</LoggerRootDirectory>
-      <IntermediateDirectory>F:\USB Drive\XNA\Projects\SoS\SoS\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>E:\USB Drive\XNA\Projects\SoS\SoS\Content\</RootDirectory>
+      <LoggerRootDirectory>E:\USB Drive\XNA\Projects\SoS\SoS\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\USB Drive\XNA\Projects\SoS\SoS\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -142,7 +142,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2008-08-25T14:34:43.4474112-04:00</Value>
+        <Value>2008-06-18T01:56:26.828125-04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
