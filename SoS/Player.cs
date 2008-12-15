@@ -37,19 +37,19 @@ namespace SoS
             KeyboardState keyState = Keyboard.GetState();
             MouseState mouse = Mouse.GetState();
             xVel = 0f; yVel = 0f;
-            if (keyState.IsKeyDown(Keys.Up))
+            if (keyState.IsKeyDown(Keys.W))
             {
                 yVel = -speed;
             }
-            if (keyState.IsKeyDown(Keys.Down))
+            if (keyState.IsKeyDown(Keys.S))
             {
                 yVel = speed;
             }
-            if (keyState.IsKeyDown(Keys.Left))
+            if (keyState.IsKeyDown(Keys.A))
             {
                 xVel = -speed;
             }
-            if (keyState.IsKeyDown(Keys.Right))
+            if (keyState.IsKeyDown(Keys.D))
             {
                 xVel = speed;
             }
