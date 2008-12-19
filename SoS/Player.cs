@@ -12,22 +12,26 @@ namespace SoS
     {
         float speed = .2f;
         Game1 game;
+        bool isMouseDown;
         public Player(int x, int y, Texture2D _pic, Game1 _game) : base(x,y,_pic)
         {
            xVel = 0f; yVel = 0f;
            game = _game;
+           isMouseDown = false;
         }
         public Player(Texture2D _pic, Rectangle rect, Color c, Game1 _game)
             : base(_pic, rect, c)
         {
             xVel = 0f; yVel = 0f;
             game = _game;
+            isMouseDown = false;
         }
         public Player(Texture2D _pic, Rectangle _picRect, float _rotation, int _velocity, float _health, Color _color, Game1 _game)
                     : base(_pic,_picRect,_rotation,_velocity,_health,_color)
         {
             xVel = 0f; yVel = 0f;
             game = _game;
+            isMouseDown = false;
         } 
         public override void UpdateMove(GameTime gameTime)
         {
@@ -73,9 +77,17 @@ namespace SoS
             }
             if (mouse.LeftButton == ButtonState.Pressed)
             {
-                Projectile shot = new Projectile("pShot",new Rectangle(picRect.X,picRect.Y,20,20),.2f,color);
-                shot.setRotation(rotation);
-                game.addProjectile(shot);
+                if (!isMouseDown)
+                {
+                    Projectile shot = new Projectile("pShot", new Rectangle(picRect.X, picRect.Y, 20, 20), .35f, color, rotation);
+                    shot.setRotation(rotation);
+                    game.addProjectile(shot);
+                    isMouseDown = true;
+                }
+            }
+            if (mouse.LeftButton == ButtonState.Released)
+            {
+                isMouseDown = false;
             }
         }
         public override void  Draw(Rectangle scope, SpriteBatch spriteBatch)

@@ -37,7 +37,7 @@ namespace SoS
         
         //Menu stuff
         int time = 1800; // 30 seconds
-        const int menuState = 0, pausedState = 1, playState = 2, optionsState = 3, introState = 4;
+        const int menuState = 0, pausedState = 1, playState = 2, optionsState = 3, introState = 4, controlsState = 5;
         StateMachine stateMachine = new StateMachine(0);
         bool pauseHeld = false;
         SpriteFont font;
@@ -45,7 +45,7 @@ namespace SoS
         Texture2D BG; //Background
         int xOffset = 30;
         int yOffset = 40;
-        String[] menuItems;
+        String[] menuItems, optionsMenuItems;
         int selected = 0;
         InputState input = new InputState();
         Song hellRaider;
@@ -103,6 +103,7 @@ namespace SoS
             BG = Content.Load<Texture2D>("bg");
             font = Content.Load<SpriteFont>("TimesNewRoman");
             menuItems = new String[4] { "play", "options", "intro", "exit" };
+            optionsMenuItems = new String[2] { "controls", "back" };
             // TODO: use this.Content to load your game content here
         }
 
@@ -170,16 +171,76 @@ namespace SoS
             {
                 updateMenu(gameTime);
             }
+            else if (stateMachine.getState() == optionsState)
+            {
+                updateOptionsMenu(gameTime);
+            }
+            else if (stateMachine.getState() == controlsState)
+            {
+                updateControlsMenu(gameTime);
+            }
             base.Update(gameTime);
         }
 
-        public void updateMenu(GameTime gameTime)
+        public void updateControlsMenu(GameTime gameTime)
         {
-            handleInput(input);
+            oldKeyState = newKeyState;
+            newKeyState = Keyboard.GetState();
 
+            if (oldKeyState.IsKeyUp(Keys.Down) && newKeyState.IsKeyDown(Keys.Down))
+            {
+                if (selected < optionsMenuItems.Length)
+                    selected++;
+                if (selected == optionsMenuItems.Length)
+                    selected = 0;
+                Console.WriteLine(selected);
+            }
+
+            else if (oldKeyState.IsKeyUp(Keys.Up) && newKeyState.IsKeyDown(Keys.Up))
+            {
+                if (selected == 0)
+                    selected = optionsMenuItems.Length;
+                if (selected > 0)
+                    selected--;
+                Console.WriteLine(selected);
+            }
+
+            if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
+                changePlayState();
+            if (oldKeyState.IsKeyUp(Keys.Escape) && newKeyState.IsKeyDown(Keys.Escape))
+                stateMachine.changeState(1);
         }
 
-        public void handleInput(InputState input)
+        public void updateOptionsMenu(GameTime gameTime)
+        {
+            oldKeyState = newKeyState;
+            newKeyState = Keyboard.GetState();
+
+            if (oldKeyState.IsKeyUp(Keys.Down) && newKeyState.IsKeyDown(Keys.Down))
+            {
+                if (selected < optionsMenuItems.Length)
+                    selected++;
+                if (selected == optionsMenuItems.Length)
+                    selected = 0;
+                Console.WriteLine(selected);
+            }
+
+            else if (oldKeyState.IsKeyUp(Keys.Up) && newKeyState.IsKeyDown(Keys.Up))
+            {
+                if (selected == 0)
+                    selected = optionsMenuItems.Length;
+                if (selected > 0)
+                    selected--;
+                Console.WriteLine(selected);
+            }
+
+            if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
+                changePlayState();
+            if (oldKeyState.IsKeyUp(Keys.Escape) && newKeyState.IsKeyDown(Keys.Escape))
+                stateMachine.changeState(1);
+        }
+
+        public void updateMenu(GameTime gameTime)
         {
             oldKeyState = newKeyState;
             newKeyState = Keyboard.GetState();
@@ -225,6 +286,16 @@ namespace SoS
                     this.Exit();
                     break;
             }
+
+            switch (optionsMenuItems[selected])
+            {
+                case "controls":
+                    stateMachine.changeState(5);
+                    break;
+                case "back":
+                    stateMachine.changeState(0);
+                    break;
+            }
         }
 
         /// <summary>
@@ -250,6 +321,19 @@ namespace SoS
                         spriteBatch.Draw(BG, Vector2.Zero, Color.White);
                         break;
                     case introState:
+                        break;
+
+                }
+                spriteBatch.End();
+            }
+            else if (stateMachine.getState() == optionsState)
+            {
+                graphics.GraphicsDevice.Clear(Color.Black);
+                spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+                switch (stateMachine.getState())
+                {
+                    case controlsState:
+                        drawOptionsMenu(gameTime);
                         break;
 
                 }
@@ -314,6 +398,19 @@ namespace SoS
 
             base.Draw(gameTime);
         }
+        public void drawOptionsMenu(GameTime gameTime)
+        {
+            spriteBatch.Draw(BG, Vector2.Zero, Color.White);
+            String name = "Stratagem of Sagacity";
+            spriteBatch.DrawString(font, name, new Vector2(graphics.PreferredBackBufferWidth / 2 - font.MeasureString(name).X / 2, 0), Color.GreenYellow);
+            for (int c = 0; c < optionsMenuItems.Length; c++)
+            {
+                if (selected == c)
+                    spriteBatch.DrawString(font, optionsMenuItems[c], new Vector2(xOffset, 100 + c * yOffset), Color.Yellow);
+                else
+                    spriteBatch.DrawString(font, optionsMenuItems[c], new Vector2(xOffset, 100 + c * yOffset), Color.White);
+            }
+        }
         public void drawMenu(GameTime gameTime)
         {
             spriteBatch.Draw(BG, Vector2.Zero, Color.White);
@@ -326,7 +423,6 @@ namespace SoS
                 else
                     spriteBatch.DrawString(font, menuItems[c], new Vector2(xOffset, 100 + c * yOffset), Color.White);
             }
-
         }
         public void addProjectile(Projectile p)
         {
