@@ -41,9 +41,10 @@ namespace SoS
             KeyboardState keyState = Keyboard.GetState();
             MouseState mouse = Mouse.GetState();
             int mX, mY, pX, pY;
-            mX = mouse.X + game.getCamera().X; mY = mouse.Y + game.getCamera().Y;
-            pX = picRect.X + game.getCamera().X; pY = picRect.Y + game.getCamera().Y;
-            rotation = -(float)Math.Atan2((((pX + ((double)picRect.Width / 2.0))) - mX), (((pY + ((double)picRect.Height / 2.0))) - mY));
+            mX = mouse.X; mY = mouse.Y;
+            pX = picRect.X - game.getCamera().X; pY = picRect.Y - game.getCamera().Y;
+            rotation = -(float)Math.Atan2(((double)pX - (double)mX), ((double)pY - (double)mY));
+            
             xVel = 0f; yVel = 0f;
             if (keyState.IsKeyDown(Keys.W))
             {
@@ -93,10 +94,6 @@ namespace SoS
             {
                 isMouseDown = false;
             }
-        }
-        public override void  Draw(Rectangle scope, SpriteBatch spriteBatch)
-        {   
- 	        base.Draw(scope, spriteBatch);
         }
         public override Being Predict(GameTime gameTime)
         {
