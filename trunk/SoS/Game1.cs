@@ -235,7 +235,7 @@ namespace SoS
             }
 
             if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
-                changePlayState();
+                changeOptionsState();
             if (oldKeyState.IsKeyUp(Keys.Escape) && newKeyState.IsKeyDown(Keys.Escape))
                 stateMachine.changeState(1);
         }
@@ -244,7 +244,7 @@ namespace SoS
         {
             oldKeyState = newKeyState;
             newKeyState = Keyboard.GetState();
-
+    
             if (oldKeyState.IsKeyUp(Keys.Down) && newKeyState.IsKeyDown(Keys.Down))
             {
                 if (selected < menuItems.Length)
@@ -287,6 +287,10 @@ namespace SoS
                     break;
             }
 
+            
+        }
+        public void changeOptionsState()
+        {
             switch (optionsMenuItems[selected])
             {
                 case "controls":
@@ -429,6 +433,10 @@ namespace SoS
             p.setPic(Content.Load<Texture2D>(p.getPicName()));
             projectiles.Add(p);
 
+        }
+        public Rectangle getCamera()
+        {
+            return camera;
         }
         
     }

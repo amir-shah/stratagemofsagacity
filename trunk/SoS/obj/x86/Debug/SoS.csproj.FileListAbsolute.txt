@@ -54,3 +54,4 @@ F:\XNA\SoS\SoS\obj\x86\Debug\ResolveAssemblyReference.cache
 F:\XNA\SoS\SoS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 F:\XNA\SoS\SoS\obj\x86\Debug\SoS.exe
 F:\XNA\SoS\SoS\obj\x86\Debug\SoS.pdb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\hellRaider.wma
