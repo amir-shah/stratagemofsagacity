@@ -40,6 +40,10 @@ namespace SoS
             //rotation = -(float)Math.Atan2((((picRect.X + (picRect.Width / 2))) - mouse.X) * (Math.PI / 180), (((picRect.Y + (picRect.Height / 2))) - mouse.Y) * (Math.PI / 180));
             KeyboardState keyState = Keyboard.GetState();
             MouseState mouse = Mouse.GetState();
+            int mX, mY, pX, pY;
+            mX = mouse.X + game.getCamera().X; mY = mouse.Y + game.getCamera().Y;
+            pX = picRect.X + game.getCamera().X; pY = picRect.Y + game.getCamera().Y;
+            rotation = -(float)Math.Atan2((((pX + ((double)picRect.Width / 2.0))) - mX), (((pY + ((double)picRect.Height / 2.0))) - mY));
             xVel = 0f; yVel = 0f;
             if (keyState.IsKeyDown(Keys.W))
             {
@@ -79,7 +83,7 @@ namespace SoS
             {
                 if (!isMouseDown)
                 {
-                    Projectile shot = new Projectile("pShot", new Rectangle(picRect.X, picRect.Y, 20, 20), .35f, color, rotation);
+                    Projectile shot = new Projectile("pShot", new Rectangle(picRect.X, picRect.Y, 20, 20), .35f, color);
                     shot.setRotation(rotation);
                     game.addProjectile(shot);
                     isMouseDown = true;
@@ -91,11 +95,7 @@ namespace SoS
             }
         }
         public override void  Draw(Rectangle scope, SpriteBatch spriteBatch)
-        {
-            MouseState mouse = Mouse.GetState();
-            int mX, mY;
-            mX = mouse.X + scope.X; mY = mouse.Y + scope.Y;
-            rotation = -(float)Math.Atan2((((picRect.X + (picRect.Width / 2))) - mX), (((picRect.Y + (picRect.Height / 2))) - mY));
+        {   
  	        base.Draw(scope, spriteBatch);
         }
         public override Being Predict(GameTime gameTime)
