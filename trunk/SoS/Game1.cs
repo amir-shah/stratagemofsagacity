@@ -128,7 +128,7 @@ namespace SoS
                 this.Exit();
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                if (stateMachine.getState() != pausedState && !pauseHeld)
+                if (stateMachine.getState() != pausedState && !pauseHeld && stateMachine.getState() != menuState)
                     stateMachine.changeState(pausedState);
                 else if (stateMachine.getState() == pausedState && !pauseHeld)
                     stateMachine.changeState(stateMachine.getPrevState());
@@ -207,8 +207,6 @@ namespace SoS
 
             if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
                 changePlayState();
-            if (oldKeyState.IsKeyUp(Keys.Escape) && newKeyState.IsKeyDown(Keys.Escape))
-                stateMachine.changeState(1);
         }
 
         public void updateOptionsMenu(GameTime gameTime)
@@ -265,8 +263,6 @@ namespace SoS
 
             if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
                 changePlayState();
-            if (oldKeyState.IsKeyUp(Keys.Escape) && newKeyState.IsKeyDown(Keys.Escape))
-                stateMachine.changeState(1);
         }
 
         public void changePlayState()
