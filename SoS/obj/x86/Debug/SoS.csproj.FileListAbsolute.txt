@@ -55,3 +55,23 @@ F:\XNA\SoS\SoS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 F:\XNA\SoS\SoS\obj\x86\Debug\SoS.exe
 F:\XNA\SoS\SoS\obj\x86\Debug\SoS.pdb
 E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\hellRaider.wma
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\box.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\blankPixel.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\background.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\crosshair.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\alienship.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\bg.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\turtle.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\pShot.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\floor.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\tank.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\TimesNewRoman.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\hellRaider.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\hellRaider.wma
+G:\SoS\trunk\SoS\bin\x86\Debug\SoS.exe
+G:\SoS\trunk\SoS\bin\x86\Debug\SoS.pdb
+G:\SoS\trunk\SoS\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\SoS\trunk\SoS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+G:\SoS\trunk\SoS\obj\x86\Debug\SoS.exe
+G:\SoS\trunk\SoS\obj\x86\Debug\SoS.pdb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Page 1.xnb
