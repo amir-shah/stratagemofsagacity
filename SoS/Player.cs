@@ -46,19 +46,19 @@ namespace SoS
             rotation = -(float)Math.Atan2(((double)pX - (double)mX), ((double)pY - (double)mY));
             
             xVel = 0f; yVel = 0f;
-            if (keyState.IsKeyDown(Keys.W))
+            if (keyState.IsKeyDown(Keys.W) && canMoveUp)
             {
                 yVel = -speed;
             }
-            if (keyState.IsKeyDown(Keys.S))
+            if (keyState.IsKeyDown(Keys.S) && canMoveDown)
             {
                 yVel = speed;
             }
-            if (keyState.IsKeyDown(Keys.A))
+            if (keyState.IsKeyDown(Keys.A) && canMoveLeft)
             {
                 xVel = -speed;
             }
-            if (keyState.IsKeyDown(Keys.D))
+            if (keyState.IsKeyDown(Keys.D) && canMoveRight)
             {
                 xVel = speed;
             }
@@ -84,7 +84,9 @@ namespace SoS
             {
                 if (!isMouseDown)
                 {
-                    Projectile shot = new Projectile("pShot", new Rectangle(picRect.X, picRect.Y, 20, 20), .35f, color);
+                    int shotX = picRect.X + (int)((picRect.Width + 20) * Math.Sin(rotation));
+                    int shotY = picRect.Y + (int)((picRect.Height + 20)* -Math.Cos(rotation));
+                    Projectile shot = new Projectile("pShot", new Rectangle(shotX, shotY, 20, 20), .3f, color,game);
                     shot.setRotation(rotation);
                     game.addProjectile(shot);
                     isMouseDown = true;
@@ -94,6 +96,7 @@ namespace SoS
             {
                 isMouseDown = false;
             }
+            canMoveUp = true; canMoveDown = true; canMoveLeft = true; canMoveRight = true;
         }
         public override Being Predict(GameTime gameTime)
         {

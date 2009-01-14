@@ -12,7 +12,6 @@ namespace SoS
     class Wall : Obstacle
     {
         int x, y, width, height;//all in units
-        Rectangle bounds;
         Texture2D sprite;
         private bool visible = true;
         Color color = Color.White;
@@ -25,7 +24,7 @@ namespace SoS
             height = 1;
             sprite = _sprite;
             //there is sprite, so just sprite bounds
-            bounds = new Rectangle(x, y, sprite.Width, sprite.Height);
+            picRect = new Rectangle(x, y, sprite.Width, sprite.Height);
         }
         public Wall(Texture2D _sprite, int _x, int _y, int _width, int _height)
         {
@@ -35,7 +34,7 @@ namespace SoS
             height = _height;
             sprite = _sprite;
             //more than 1 sprite in sequence, total bounds
-            bounds = new Rectangle(x, y, sprite.Width*width, sprite.Height*height);
+            picRect = new Rectangle(x, y, sprite.Width*width, sprite.Height*height);
         }
         public bool isVisible()
         {
@@ -84,10 +83,6 @@ namespace SoS
                 curX = x - scope.X;
                 curY += sprite.Height;
             }
-        }
-        public override Rectangle getRectangle()
-        {
-            return new Rectangle(x, y, sprite.Width, sprite.Height);
         }
     }
 }

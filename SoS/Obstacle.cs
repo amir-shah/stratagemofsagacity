@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using SOS;
 
 namespace SoS
 {
-    public abstract class Obstacle
+    public abstract class Obstacle : Collideable
     {
         Texture2D sprite;
         int x, y;
@@ -27,13 +28,31 @@ namespace SoS
             double factor = scope.Width / mini.Width;
             batch.Draw(sprite, new Rectangle((int)(mini.X + ((x - scope.X) / factor)), (int)(mini.Y + ((y - scope.Y) / factor)), (int)(sprite.Width / factor), (int)(sprite.Height / factor)), Color.White);
         }
-        public virtual Rectangle getRectangle()
+        public override bool collides(Collideable other)
         {
-            return new Rectangle(x, y, sprite.Width, sprite.Height);
+            return picRect.Intersects(other.getRectangle());
         }
-        public virtual bool intersects(Rectangle r)
+        public override void collidedWith(Collideable other)
         {
-            return getRectangle().Intersects(r);
+            if (other is Being)
+            {
+                Being b = (Being)other;
+                Rectangle top, bottom, left, right;
+                int size = 5;
+                top = new Rectangle(picRect.X, picRect.Y, picRect.Width, size);
+                bottom = new Rectangle(picRect.X, picRect.Y + picRect.Height - size, picRect.Width, size);
+                left = new Rectangle(picRect.X, picRect.Y, size, picRect.Height);
+                right = new Rectangle(picRect.X + picRect.Width - size, picRect.Y, size, picRect.Height);
+                if(other.getRectangle().Intersects(top))
+                    b.setMoveDown(false);
+                if(other.getRectangle().Intersects(bottom))
+                    b.setMoveUp(false);
+                if (other.getRectangle().Intersects(left))
+                    b.setMoveRight(false);
+                if (other.getRectangle().Intersects(right))
+                    b.setMoveLeft(false);
+
+            }
         }
     }
 }

@@ -47,7 +47,7 @@ namespace SoS
             }
             foreach (Obstacle o in obs)
             {
-                if (o.intersects(scope))
+                if (o.getRectangle().Intersects(scope))
                     o.draw(batch, scope);
             }
         }
@@ -65,9 +65,13 @@ namespace SoS
             }
             foreach (Obstacle o in obs)
             {
-                if (o.intersects(scope))
+                if (o.getRectangle().Intersects(scope))
                     o.drawMini(batch,scope,mini);
             }
+        }
+        public bool remove(Obstacle ob)
+        {
+            return obs.Remove(ob);
         }
         public int getWidth()
         {
@@ -76,6 +80,10 @@ namespace SoS
         public int getHeight()
         {
             return height;
+        }
+        public List<Obstacle> getObs()
+        {
+            return obs;
         }
     }
 }

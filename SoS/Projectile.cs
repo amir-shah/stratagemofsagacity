@@ -6,19 +6,18 @@ using Microsoft.Xna.Framework;
 
 namespace SoS
 {
-    public class Projectile
+    public class Projectile : Collideable
     {
         protected Texture2D pic;
         protected string picName;
-        protected Rectangle picRect;
         //Rectangle prevPicRect;????????
         protected float speed;
         protected float rotation; //in degrees
         protected Color color;
         protected float power;
+        protected Game1 game;
 
-
-        public Projectile(int x, int y, Texture2D _pic, float _speed)
+        public Projectile(int x, int y, Texture2D _pic, float _speed, Game1 _game)
         {
             //defaults
             pic = _pic;
@@ -28,8 +27,9 @@ namespace SoS
             speed = _speed;
             power = 1.0f;
             color = Color.White;
+            game = _game;
         }
-        public Projectile(Texture2D _pic, Rectangle rect,float _speed, Color c)
+        public Projectile(Texture2D _pic, Rectangle rect, float _speed, Color c, Game1 _game)
         {
             pic = _pic;
             picRect = rect;
@@ -37,9 +37,10 @@ namespace SoS
             speed = _speed;
             power = 1.0f;
             color = c;
+            game = _game;
         }
 
-        public Projectile(Texture2D _pic, Rectangle _picRect, float _rotation, int _velocity, float _power,float _speed, Color _color)
+        public Projectile(Texture2D _pic, Rectangle _picRect, float _rotation, int _velocity, float _power, float _speed, Color _color, Game1 _game)
         {
             pic = _pic;
             picRect = _picRect;
@@ -48,8 +49,9 @@ namespace SoS
             speed = _speed;
             power = _power;
             color = _color;
+            game = _game;
         }
-        public Projectile(string name, Rectangle rect, float _speed, Color c)
+        public Projectile(string name, Rectangle rect, float _speed, Color c, Game1 _game)
         {
             picName = name;
             picRect = rect;
@@ -57,6 +59,7 @@ namespace SoS
             speed = _speed;
             power = 1.0f;
             color = c;
+            game = _game;
         }
 
         public Projectile(string name, Rectangle _picRect, float _rotation, int _velocity, float _power, float _speed, Color _color)
@@ -85,10 +88,9 @@ namespace SoS
         }
         public virtual Projectile Predict(GameTime gameTime)
         {
-            Projectile futureSelf = new Projectile(picRect.X, picRect.Y, pic,speed);
+            Projectile futureSelf = new Projectile(picRect.X, picRect.Y, pic,speed, game);
             futureSelf.setRotation(rotation);
-            GameTime futureTime = new GameTime(new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2));
-            futureSelf.UpdateMove(futureTime);
+            futureSelf.UpdateMove(gameTime);
             return futureSelf;
         }
         public virtual void drawMini(SpriteBatch batch, Rectangle scope, Rectangle mini)
@@ -97,6 +99,15 @@ namespace SoS
             //batch.Draw(pic, new Rectangle((int)(mini.X + ((picRect.X - scope.X) / factor)), (int)(mini.Y + ((picRect.Y - scope.Y) / factor)), (int)(picRect.Width / factor), (int)(picRect.Height / factor)), Color.White);
             batch.Draw(pic, new Rectangle((int)(mini.X + ((picRect.X - scope.X) / factor)), (int)(mini.Y + ((picRect.Y - scope.Y) / factor)), (int)(picRect.Width / factor), (int)(picRect.Height / factor)), null,
                             color, rotation, new Vector2(pic.Width / 2, pic.Height / 2), SpriteEffects.None, 0f);
+        }
+        public override bool collides(Collideable other)
+        {
+            return picRect.Intersects(other.getRectangle());
+        }
+        public override void collidedWith(Collideable other)
+        {
+            game.remove(other);
+            game.remove(this);
         }
         public void setRotation(float angle)
         {

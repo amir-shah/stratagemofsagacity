@@ -9,12 +9,12 @@ using SoS;
 
 namespace SOS
 {
-    class Being
+    public class Being : Collideable
     {
         protected Texture2D pic;
-        protected Rectangle picRect;
         //Rectangle prevPicRect;????????
         protected float xVel = .1f, yVel = 0f;
+        protected bool canMoveUp = true, canMoveDown = true, canMoveLeft = true, canMoveRight = true;
         protected float rotation; //in degrees
         protected Color color;
         protected float health;
@@ -56,8 +56,9 @@ namespace SOS
         {
             
             int elapsedTime = (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-
+            if((xVel > 0 && canMoveRight) || (xVel < 0 && canMoveLeft))
             picRect.X += (int)(xVel * elapsedTime);
+            if((yVel > 0 && canMoveDown) || (yVel < 0 && canMoveUp))
             picRect.Y += (int)(yVel * elapsedTime);
             if (picRect.X <= 0)
             {
@@ -79,8 +80,8 @@ namespace SOS
             {
                 picRect.Y -= 2 * (picRect.Y + pic.Height - Game1.map.getHeight());
                 yVel *= -1f;
-            } 
-     
+            }
+            canMoveUp = true; canMoveDown = true; canMoveLeft = true; canMoveRight = true;
             //?????????????????????????????????????
             /*if (gameTime.TotalGameTime.Seconds >= 2)
             {
@@ -134,8 +135,7 @@ namespace SOS
             return being; */
             Being futureSelf = new Being(picRect.X, picRect.Y, pic);
             futureSelf.setVelocity(new Vector2(xVel, yVel));
-            GameTime futureTime = new GameTime(new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2));
-            futureSelf.UpdateMove(futureTime);
+            futureSelf.UpdateMove(gameTime);
             return futureSelf;
         }
         public virtual void drawMini(SpriteBatch batch, Rectangle scope, Rectangle mini)
@@ -145,9 +145,13 @@ namespace SOS
             batch.Draw(pic, new Rectangle((int)(mini.X + ((picRect.X - scope.X) / factor)), (int)(mini.Y + ((picRect.Y - scope.Y) / factor)), (int)(picRect.Width / factor), (int)(picRect.Height / factor)), null,
                             color, rotation, new Vector2(pic.Width / 2, pic.Height / 2), SpriteEffects.None, 0f);
         }
-        public virtual bool intersects(Rectangle r)
+        public override bool collides(Collideable other)
         {
-            return picRect.Intersects(r);
+            return picRect.Intersects(other.getRectangle());
+        }
+        public override void collidedWith(Collideable other)
+        {
+            setVelocity(new Vector2(0, 0));
         }
         public void setVelocity(Vector2 vel)
         {
@@ -165,6 +169,22 @@ namespace SOS
         public void setRotation(float angle)
         {
             rotation = angle;
+        }
+        public void setMoveUp(bool b)
+        {
+            canMoveUp = b;
+        }
+        public void setMoveDown(bool b)
+        {
+            canMoveDown = b;
+        }
+        public void setMoveLeft(bool b)
+        {
+            canMoveLeft = b;
+        }
+        public void setMoveRight(bool b)
+        {
+            canMoveRight = b;
         }
     }
 }
