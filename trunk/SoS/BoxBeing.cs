@@ -74,8 +74,7 @@ namespace SoS
             BoxBeing futureSelf = new BoxBeing(picRect.X, picRect.Y, pic,sideLength);
             futureSelf.setVelocity(new Vector2(xVel, yVel));
             futureSelf.setOrigin(new Point(xInit, yInit));
-            GameTime futureTime = new GameTime(new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 2));
-            futureSelf.UpdateMove(futureTime);
+            futureSelf.UpdateMove(gameTime);
             return (Being)futureSelf;
         }
     }

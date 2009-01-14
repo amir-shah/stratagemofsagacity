@@ -26,6 +26,7 @@ namespace SoS
         Texture2D wallSprite, background, mouseSprite, enemySprite, playerSprite;
         Rectangle camera = new Rectangle(0,0, WIDTH, HEIGHT);
         int xCamBuffer = 100, yCamBuffer = 100; //cameraSpeed = 1;
+        const int future = 2000;
         public static Texture2D pixel;
         public static int WIDTH = 800, HEIGHT = 537;
         int miniNum = 3;
@@ -93,7 +94,7 @@ namespace SoS
             walls.Add(new Wall(wallSprite, 1000, 100, 3, 3));
             walls.Add(new Wall(wallSprite, 100, 700, 1, 1));
             map.loadObstacles(walls);
-            player = new Player(playerSprite, new Rectangle(0,0,50,50),Color.White, this);
+            player = new Player(playerSprite, new Rectangle(100,100,50,50),Color.White, this);
             beings.Add(new Being(100, 10, enemySprite));
             beings.Add(new BoxBeing(950, 60, enemySprite, 200));
             beings.Add(player);
@@ -165,7 +166,7 @@ namespace SoS
                 if (camera.Y < 0) camera.Y = 0;
                 if (camera.Y + HEIGHT > map.getHeight()) camera.Y = map.getHeight() - HEIGHT;
                 // TODO: Add your update logic here
-                
+                checkCollisions();
             }
             else if (stateMachine.getState() == menuState)
             {
@@ -181,7 +182,44 @@ namespace SoS
             }
             base.Update(gameTime);
         }
+       public void checkCollisions()
+        {
+            //put everything on screen in one list
+            List<Collideable> all = addAll();
+             
+            for (int i = 0; i < all.Count; i++)
+            {
+                for (int j = i + 1; j < all.Count; j++)
+                {
+                    Collideable me = all[i];
+                    Collideable him = all[j];
 
+                    if (me.collides(him))
+                    {
+                        him.collidedWith(me);
+                        me.collidedWith(him);
+
+                    }
+                }
+            }
+        }
+       private List<Collideable> addAll()
+       {
+           List<Collideable> all = new List<Collideable>();
+           foreach (Being b in beings)
+           {
+               all.Add(b);
+           }
+           foreach (Projectile p in projectiles)
+           {
+               all.Add(p);
+           }
+           foreach (Obstacle o in map.getObs())
+           {
+               all.Add(o);
+           }
+           return all;
+       }
         public void updateControlsMenu(GameTime gameTime)
         {
             oldKeyState = newKeyState;
@@ -234,8 +272,6 @@ namespace SoS
 
             if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
                 changeOptionsState();
-            if (oldKeyState.IsKeyUp(Keys.Escape) && newKeyState.IsKeyDown(Keys.Escape))
-                stateMachine.changeState(1);
         }
 
         public void updateMenu(GameTime gameTime)
@@ -366,17 +402,18 @@ namespace SoS
                 {
                     spriteBatch.Draw(pixel, new Rectangle(miniMap.X, i, 1, 1), Color.Black);
                 }
+                GameTime futureTime = new GameTime(new TimeSpan(0, 0, 0, 0, future), new TimeSpan(0, 0, 0, 0, future), new TimeSpan(0, 0, 0, 0, future), new TimeSpan(0, 0, 0, 0, future));
                 foreach (Being b in beings)
                 {
-                    Being fB = b.Predict(gameTime);
-                    if (fB.intersects(camera))
+                    Being fB = b.Predict(futureTime);
+                    if (fB.getRectangle().Intersects(camera))
                     {
                         fB.drawMini(spriteBatch, camera, miniMap);
                     }
                 }
                 foreach (Projectile p in projectiles)
                 {
-                    Projectile fP = p.Predict(gameTime);
+                    Projectile fP = p.Predict(futureTime);
                     if (fP.intersects(camera))
                     {
                         fP.drawMini(spriteBatch, camera, miniMap);
@@ -423,6 +460,22 @@ namespace SoS
                 else
                     spriteBatch.DrawString(font, menuItems[c], new Vector2(xOffset, 100 + c * yOffset), Color.White);
             }
+        }
+        public bool remove(Collideable other)
+        {
+            if (other is Being)
+            {
+                return beings.Remove((Being)other);
+            }
+            else if(other is Projectile)
+            {
+                return projectiles.Remove((Projectile)other);
+            }
+            else if (other is Obstacle)
+            {
+                return map.remove((Obstacle)other);
+            }
+            return false;
         }
         public void addProjectile(Projectile p)
         {
