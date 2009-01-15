@@ -8,6 +8,29 @@ Content\turtle.xnb
 Content\pShot.xnb
 Content\floor.xnb
 Content\tank.xnb
+Content\aiming.xnb
+Content\Player\aiming.xnb
+Content\Player\dead.xnb
+Content\Player\frame 1 and 3_firing.xnb
+Content\Player\frame 1 and 3_walking.xnb
+Content\Player\frame 2_firing.xnb
+Content\Player\frame 2_walking.xnb
+Content\Player\frame 4_walking.xnb
+Content\Player\standing.xnb
+Content\Enemy\aiming.xnb
+Content\Enemy\dead.xnb
+Content\Enemy\frame 1 and 3_fire.xnb
+Content\Enemy\frame 1 and 3_walking.xnb
+Content\Enemy\frame 2_fire.xnb
+Content\Enemy\frame 2_walking.xnb
+Content\Enemy\frame 4_walking.xnb
+Content\Enemy\hit.xnb
+Content\Enemy\standing.xnb
+Content\Gun Fire\frame1_enemy fire.xnb
+Content\Gun Fire\frame1_good fire.xnb
+Content\Gun Fire\frame2_enemy fire.xnb
+Content\Gun Fire\frame2_good fire.xnb
 Content\TimesNewRoman.xnb
 Content\hellRaider.xnb
+Content\SoS Protype Music.xnb
 Content\hellRaider.wma

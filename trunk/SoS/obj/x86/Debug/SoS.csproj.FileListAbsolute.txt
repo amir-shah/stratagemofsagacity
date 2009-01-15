@@ -74,4 +74,26 @@ G:\SoS\trunk\SoS\obj\x86\Debug\ResolveAssemblyReference.cache
 G:\SoS\trunk\SoS\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 G:\SoS\trunk\SoS\obj\x86\Debug\SoS.exe
 G:\SoS\trunk\SoS\obj\x86\Debug\SoS.pdb
-G:\SoS\trunk\SoS\bin\x86\Debug\Content\Page 1.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\aiming.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\dead.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 1 and 3_firing.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 1 and 3_walking.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 2_firing.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 2_walking.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 4_walking.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\standing.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\aiming.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\dead.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 1 and 3_fire.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 1 and 3_walking.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 2_fire.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 2_walking.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 4_walking.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\hit.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\standing.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame1_enemy fire.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame1_good fire.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame2_enemy fire.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame2_good fire.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\aiming.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\SoS Protype Music.xnb
