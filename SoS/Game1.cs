@@ -85,8 +85,8 @@ namespace SoS
             pixel = Content.Load<Texture2D>("blankPixel");
             background = Content.Load<Texture2D>("floor");
             mouseSprite = Content.Load<Texture2D>("crosshair");
-            enemySprite = Content.Load<Texture2D>("tank");
-            playerSprite = Content.Load<Texture2D>("turtle");
+            enemySprite = Content.Load<Texture2D>("Enemy/standing");
+            playerSprite = Content.Load<Texture2D>("Player/standing");
             map = new Map(10000, 10000, background);
             List<Obstacle> walls = new List<Obstacle>();
             walls.Add(new Wall(wallSprite, 10, 10, 2, 5));

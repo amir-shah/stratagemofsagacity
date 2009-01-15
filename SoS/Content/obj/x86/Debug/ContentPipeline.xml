@@ -92,6 +92,204 @@
       <Time>2009-01-08T12:51:00-05:00</Time>
     </Item>
     <Item>
+      <Source>aiming.jpg</Source>
+      <Name>aiming</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\aiming.xnb</Output>
+      <Time>2009-01-14T13:26:18-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\aiming.png</Source>
+      <Name>Player\aiming</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\aiming.xnb</Output>
+      <Time>2009-01-15T13:36:02-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\dead.png</Source>
+      <Name>Player\dead</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\dead.xnb</Output>
+      <Time>2009-01-15T13:32:24-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\frame 1 and 3_firing.png</Source>
+      <Name>Player\frame 1 and 3_firing</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 1 and 3_firing.xnb</Output>
+      <Time>2009-01-15T13:35:48-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\frame 1 and 3_walking.png</Source>
+      <Name>Player\frame 1 and 3_walking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 1 and 3_walking.xnb</Output>
+      <Time>2009-01-15T13:33:54-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\frame 2_firing.png</Source>
+      <Name>Player\frame 2_firing</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 2_firing.xnb</Output>
+      <Time>2009-01-15T13:33:44-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\frame 2_walking.png</Source>
+      <Name>Player\frame 2_walking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 2_walking.xnb</Output>
+      <Time>2009-01-15T13:33:22-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\frame 4_walking.png</Source>
+      <Name>Player\frame 4_walking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\frame 4_walking.xnb</Output>
+      <Time>2009-01-15T13:32:48-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\standing.png</Source>
+      <Name>Player\standing</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\standing.xnb</Output>
+      <Time>2009-01-15T13:32:34-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\aiming.png</Source>
+      <Name>Enemy\aiming</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\aiming.xnb</Output>
+      <Time>2009-01-15T13:37:56-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\dead.png</Source>
+      <Name>Enemy\dead</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\dead.xnb</Output>
+      <Time>2009-01-15T13:40:00-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\frame 1 and 3_fire.png</Source>
+      <Name>Enemy\frame 1 and 3_fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 1 and 3_fire.xnb</Output>
+      <Time>2009-01-15T13:39:52-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\frame 1 and 3_walking.png</Source>
+      <Name>Enemy\frame 1 and 3_walking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 1 and 3_walking.xnb</Output>
+      <Time>2009-01-15T13:39:46-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\frame 2_fire.png</Source>
+      <Name>Enemy\frame 2_fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 2_fire.xnb</Output>
+      <Time>2009-01-15T13:39:28-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\frame 2_walking.png</Source>
+      <Name>Enemy\frame 2_walking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 2_walking.xnb</Output>
+      <Time>2009-01-15T13:39:10-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\frame 4_walking.png</Source>
+      <Name>Enemy\frame 4_walking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\frame 4_walking.xnb</Output>
+      <Time>2009-01-15T13:38:44-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\hit.png</Source>
+      <Name>Enemy\hit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\hit.xnb</Output>
+      <Time>2009-01-15T13:38:30-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy\standing.png</Source>
+      <Name>Enemy\standing</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Enemy\standing.xnb</Output>
+      <Time>2009-01-15T13:38:20-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Gun Fire\frame1_enemy fire.png</Source>
+      <Name>Gun Fire\frame1_enemy fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame1_enemy fire.xnb</Output>
+      <Time>2009-01-15T13:41:18-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Gun Fire\frame1_good fire.png</Source>
+      <Name>Gun Fire\frame1_good fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame1_good fire.xnb</Output>
+      <Time>2009-01-15T13:40:56-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Gun Fire\frame2_enemy fire.png</Source>
+      <Name>Gun Fire\frame2_enemy fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame2_enemy fire.xnb</Output>
+      <Time>2009-01-15T13:40:46-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Gun Fire\frame2_good fire.png</Source>
+      <Name>Gun Fire\frame2_good fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame2_good fire.xnb</Output>
+      <Time>2009-01-15T13:40:38-05:00</Time>
+    </Item>
+    <Item>
       <Source>TimesNewRoman.spritefont</Source>
       <Name>TimesNewRoman</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -111,13 +309,13 @@
       <Time>2009-01-08T12:52:42-05:00</Time>
     </Item>
     <Item>
-      <Source>Page 1.jpg</Source>
-      <Name>Page 1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+      <Source>SoS Protype Music.wav</Source>
+      <Name>SoS Protype Music</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Page 1.xnb</Output>
-      <Time>2009-01-08T12:58:10-05:00</Time>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\SoS Protype Music.xnb</Output>
+      <Time>2009-01-15T14:08:28-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
