@@ -32,6 +32,8 @@ namespace SoS
         int miniNum = 3;
         Player player;
 
+        //Movement
+        List<List<Texture2D>> playerMovement = new List<List<Texture2D>>();
 
         List<Being> beings = new List<Being>();
         List<Projectile> projectiles = new List<Projectile>();
@@ -94,10 +96,20 @@ namespace SoS
             walls.Add(new Wall(wallSprite, 1000, 100, 3, 3));
             walls.Add(new Wall(wallSprite, 100, 700, 1, 1));
             map.loadObstacles(walls);
-            player = new Player(playerSprite, new Rectangle(100,100,50,50),Color.White, this);
+            player = new Player(playerSprite, new Rectangle(100,100,playerSprite.Width/2,playerSprite.Height/2),Color.White, this);
             beings.Add(new Being(100, 10, enemySprite));
             beings.Add(new BoxBeing(950, 60, enemySprite, 200));
             beings.Add(player);
+            
+            //Movement
+            //0=standing; 1=walking; 2=shooting; 3=dead
+            playerMovement.Add(new List<Texture2D> {Content.Load<Texture2D>("Player/standing")});
+            playerMovement.Add(new List<Texture2D> {Content.Load<Texture2D>("Player/frame 2_walking"),
+                Content.Load<Texture2D>("Player/frame 1 and 3_walking"), Content.Load<Texture2D>("Player/frame 4_walking")});
+            playerMovement.Add(new List<Texture2D> {Content.Load<Texture2D>("Player/aiming"),
+                Content.Load<Texture2D>("Player/frame 2_firing"), Content.Load<Texture2D>("Player/frame 1 and 3_firing")});
+            playerMovement.Add(new List<Texture2D> {Content.Load<Texture2D>("Player/dead")});
+            player.loadMovementList(playerMovement);
 
             //Menu Stuff
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -203,28 +215,28 @@ namespace SoS
                 }
             }
         }
-       private List<Collideable> addAll()
-       {
-           List<Collideable> all = new List<Collideable>();
-           foreach (Being b in beings)
-           {
-               all.Add(b);
-           }
-           foreach (Projectile p in projectiles)
-           {
-               all.Add(p);
-           }
-           foreach (Obstacle o in map.getObs())
-           {
-               all.Add(o);
-           }
-           return all;
-       }
+        private List<Collideable> addAll()
+        {
+            List<Collideable> all = new List<Collideable>();
+            foreach (Being b in beings)
+            {
+                all.Add(b);
+            }
+            foreach (Projectile p in projectiles)
+            {
+                all.Add(p);
+            }
+            foreach (Obstacle o in map.getObs())
+            {
+                all.Add(o);
+            }
+            return all;
+        }
         public void updateControlsMenu(GameTime gameTime)
         {
             oldKeyState = newKeyState;
             newKeyState = Keyboard.GetState();
-
+            
             if (oldKeyState.IsKeyUp(Keys.Down) && newKeyState.IsKeyDown(Keys.Down))
             {
                 if (selected < optionsMenuItems.Length)
@@ -380,7 +392,6 @@ namespace SoS
                 Rectangle miniMap = new Rectangle((int)(WIDTH - (WIDTH / miniNum)), (int)(HEIGHT - (HEIGHT / miniNum)), (int)(WIDTH / miniNum), (int)(HEIGHT / miniNum));
                 spriteBatch.Begin();
                 map.draw(spriteBatch, camera);
-
 
                 foreach (Being b in beings)
                 {

@@ -13,6 +13,9 @@ namespace SoS
         float speed = .2f;
         Game1 game;
         bool isMouseDown;
+        List<List<Texture2D>> playerMovement;
+        Point playerMovementState = new Point(0, 0);
+
         public Player(int x, int y, Texture2D _pic, Game1 _game) : base(x,y,_pic)
         {
            xVel = 0f; yVel = 0f;
@@ -32,7 +35,11 @@ namespace SoS
             xVel = 0f; yVel = 0f;
             game = _game;
             isMouseDown = false;
-        } 
+        }
+        public void loadMovementList(List<List<Texture2D>> pm)
+        {
+            playerMovement = pm;
+        }
         public override void UpdateMove(GameTime gameTime)
         {
             int elapsedTime = (int)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -49,18 +56,63 @@ namespace SoS
             if (keyState.IsKeyDown(Keys.W) && canMoveUp)
             {
                 yVel = -speed;
+                if (playerMovement != null)
+                {
+                    playerMovementState.X = 1;
+                    playerMovementState.Y++;
+                    if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                    {
+                        playerMovementState.Y = 0;
+                    }
+                    setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                }
             }
             if (keyState.IsKeyDown(Keys.S) && canMoveDown)
             {
                 yVel = speed;
+                if (playerMovement != null)
+                {
+                    playerMovementState.X = 1;
+                    playerMovementState.Y++;
+                    if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                    {
+                        playerMovementState.Y = 0;
+                    }
+                    setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                }
             }
             if (keyState.IsKeyDown(Keys.A) && canMoveLeft)
             {
                 xVel = -speed;
+                if (playerMovement != null)
+                {
+                    playerMovementState.X = 1;
+                    playerMovementState.Y++;
+                    if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                    {
+                        playerMovementState.Y = 0;
+                    }
+                    setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                }
             }
             if (keyState.IsKeyDown(Keys.D) && canMoveRight)
             {
                 xVel = speed;
+                if (playerMovement != null)
+                {
+                    playerMovementState.X = 1;
+                    playerMovementState.Y++;
+                    if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                    {
+                        playerMovementState.Y = 0;
+                    }
+                    setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                }
+            }
+            if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D))
+            {
+                playerMovementState.X = 0;
+                playerMovementState.Y = 0;
             }
             picRect.X += (int)(xVel * elapsedTime);
             picRect.Y += (int)(yVel * elapsedTime);
@@ -90,11 +142,23 @@ namespace SoS
                     shot.setRotation(rotation);
                     game.addProjectile(shot);
                     isMouseDown = true;
+                    if (playerMovement != null)
+                    {
+                        playerMovementState.X = 2;
+                        playerMovementState.Y++;
+                        if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                        {
+                            playerMovementState.Y = 0;
+                        }
+                        setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                    }
                 }
             }
             if (mouse.LeftButton == ButtonState.Released)
             {
                 isMouseDown = false;
+                playerMovementState.X = 0;
+                playerMovementState.Y = 0;
             }
             canMoveUp = true; canMoveDown = true; canMoveLeft = true; canMoveRight = true;
         }
