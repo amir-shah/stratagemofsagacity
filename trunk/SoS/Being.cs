@@ -25,7 +25,7 @@ namespace SOS
         {
             //defaults
             pic = _pic;
-            picRect = new Rectangle(x, y, pic.Width, pic.Height);
+            picRect = new Rectangle(x, y, pic.Width/2, pic.Height/2);
             //prevPicRect = new Rectangle(x, y, 50, 50); ?????
             rotation = 0.0f;
             //velocity = 0;
@@ -108,9 +108,11 @@ namespace SOS
             {
                 velocity /= 10;
             }*/
+        }
 
-            
-
+        public void setSprite(Texture2D newSprite)
+        {
+            pic = newSprite;
         }
 
         public virtual void Draw(Rectangle scope, SpriteBatch spriteBatch)
