@@ -60,11 +60,12 @@ namespace SoS
                 {
                     playerMovementState.X = 1;
                     playerMovementState.Y++;
-                    if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                    if (playerMovementState.Y >= playerMovement[playerMovementState.X].Count)
                     {
                         playerMovementState.Y = 0;
                     }
                     setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                    picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
                 }
             }
             if (keyState.IsKeyDown(Keys.S) && canMoveDown)
@@ -74,11 +75,12 @@ namespace SoS
                 {
                     playerMovementState.X = 1;
                     playerMovementState.Y++;
-                    if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                    if (playerMovementState.Y >= playerMovement[playerMovementState.X].Count)
                     {
                         playerMovementState.Y = 0;
                     }
                     setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                    picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
                 }
             }
             if (keyState.IsKeyDown(Keys.A) && canMoveLeft)
@@ -88,32 +90,71 @@ namespace SoS
                 {
                     playerMovementState.X = 1;
                     playerMovementState.Y++;
-                    if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                    if (playerMovementState.Y >= playerMovement[playerMovementState.X].Count)
                     {
                         playerMovementState.Y = 0;
                     }
                     setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                    picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
                 }
             }
             if (keyState.IsKeyDown(Keys.D) && canMoveRight)
             {
                 xVel = speed;
-                if (playerMovement != null)
-                {
+                //if (playerMovement != null)
+                //{
                     playerMovementState.X = 1;
                     playerMovementState.Y++;
-                    if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
+                    if (playerMovementState.Y >= playerMovement[playerMovementState.X].Count)
                     {
                         playerMovementState.Y = 0;
                     }
                     setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
-                }
+                    picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+                //}
             }
             if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D))
             {
                 playerMovementState.X = 0;
                 playerMovementState.Y = 0;
+                //setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                //picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
             }
+
+            if (mouse.LeftButton == ButtonState.Pressed)
+            {
+                if (!isMouseDown)
+                {
+                    int shotX = picRect.X + (int)((picRect.Width + 20) * Math.Sin(rotation));
+                    int shotY = picRect.Y + (int)((picRect.Height + 20)* -Math.Cos(rotation));
+                    Projectile shot = new Projectile("pShot", new Rectangle(shotX, shotY, 20, 20), .3f, color,game);
+                    shot.setRotation(rotation);
+                    game.addProjectile(shot);
+                    //Graphics
+                    if (playerMovement != null)
+                    {
+                        playerMovementState.X = 2;
+                        playerMovementState.Y++;
+                        if (playerMovementState.Y >= playerMovement[playerMovementState.X].Count)
+                        {
+                            playerMovementState.Y = 0;
+                        }
+                        setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                        picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+                    }
+                    game.playGunfire();
+                    isMouseDown = true;
+                }
+            }
+            if (mouse.LeftButton == ButtonState.Released)
+            {
+                isMouseDown = false;
+                playerMovementState.X = 0;
+                playerMovementState.Y = 0;
+                setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
+                picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+            }
+
             picRect.X += (int)(xVel * elapsedTime);
             picRect.Y += (int)(yVel * elapsedTime);
             if (picRect.X <= 0)
@@ -132,34 +173,7 @@ namespace SoS
             {
                 picRect.Y = Game1.map.getHeight() - pic.Height;
             }
-            if (mouse.LeftButton == ButtonState.Pressed)
-            {
-                if (!isMouseDown)
-                {
-                    int shotX = picRect.X + (int)((picRect.Width + 20) * Math.Sin(rotation));
-                    int shotY = picRect.Y + (int)((picRect.Height + 20)* -Math.Cos(rotation));
-                    Projectile shot = new Projectile("pShot", new Rectangle(shotX, shotY, 20, 20), .3f, color,game);
-                    shot.setRotation(rotation);
-                    game.addProjectile(shot);
-                    isMouseDown = true;
-                    if (playerMovement != null)
-                    {
-                        playerMovementState.X = 2;
-                        playerMovementState.Y++;
-                        if (playerMovementState.Y > playerMovement[playerMovementState.X].Count)
-                        {
-                            playerMovementState.Y = 0;
-                        }
-                        setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
-                    }
-                }
-            }
-            if (mouse.LeftButton == ButtonState.Released)
-            {
-                isMouseDown = false;
-                playerMovementState.X = 0;
-                playerMovementState.Y = 0;
-            }
+
             canMoveUp = true; canMoveDown = true; canMoveLeft = true; canMoveRight = true;
         }
         public override Being Predict(GameTime gameTime)

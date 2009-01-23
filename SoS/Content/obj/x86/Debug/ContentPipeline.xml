@@ -317,6 +317,64 @@
       <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\SoS Protype Music.xnb</Output>
       <Time>2009-01-15T14:08:28-05:00</Time>
     </Item>
+    <Item>
+      <Source>Player\firing gunfire 1.png</Source>
+      <Name>Player\firing gunfire 1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\firing gunfire 1.xnb</Output>
+      <Time>2009-01-23T08:53:00-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player\firing gunfire 2.png</Source>
+      <Name>Player\firing gunfire 2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\firing gunfire 2.xnb</Output>
+      <Time>2009-01-23T08:53:00-05:00</Time>
+    </Item>
+    <Item>
+      <Source>3-burst-Diode111-8773_hifi.mp3</Source>
+      <Name>3-burst-Diode111-8773_hifi</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.xnb</Output>
+      <Extra>G:\SoS\trunk\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.wma</Extra>
+      <Time>2009-01-23T09:10:52-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Final-calpomat-4566_hifi.mp3</Source>
+      <Name>Final-calpomat-4566_hifi</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.xnb</Output>
+      <Extra>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.wma</Extra>
+      <Time>2009-01-23T09:10:54-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Moonli-SLrec-6885_hifi.mp3</Source>
+      <Name>Moonli-SLrec-6885_hifi</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.xnb</Output>
+      <Extra>G:\SoS\trunk\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.wma</Extra>
+      <Time>2009-01-23T09:10:54-05:00</Time>
+    </Item>
+    <Item>
+      <Source>_Shif-Edgen-6832_hifi.mp3</Source>
+      <Name>_Shif-Edgen-6832_hifi</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\SoS\trunk\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.xnb</Output>
+      <Extra>G:\SoS\trunk\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.wma</Extra>
+      <Time>2009-01-23T09:10:52-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
@@ -350,7 +408,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2008-12-12T14:26:59.0854226-05:00</Value>
+        <Value>2008-12-12T14:27:09.6078292-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

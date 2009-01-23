@@ -97,3 +97,13 @@ G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame2_enemy fire.xnb
 G:\SoS\trunk\SoS\bin\x86\Debug\Content\Gun Fire\frame2_good fire.xnb
 G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\aiming.xnb
 G:\SoS\trunk\SoS\bin\x86\Debug\Content\SoS Protype Music.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\firing gunfire 1.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Player\firing gunfire 2.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.xnb
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.wma
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.wma
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.wma
+G:\SoS\trunk\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.wma

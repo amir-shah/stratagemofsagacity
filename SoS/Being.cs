@@ -18,7 +18,7 @@ namespace SOS
         protected float rotation; //in degrees
         protected Color color;
         protected float health;
-
+        
         KeyboardState keyboard;
 
         public Being(int x, int y, Texture2D _pic)
