@@ -51,15 +51,24 @@ namespace SoS
         String[] menuItems, optionsMenuItems;
         int selected = 0;
         InputState input = new InputState();
-        Song hellRaider;
+        //SoundEffect hellRaider;
+        Song hellRaider, gunfireSound;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = WIDTH;
             graphics.PreferredBackBufferHeight = HEIGHT;
-            hellRaider = Content.Load<Song>("hellRaider");
+            hellRaider = Content.Load<Song>("Final-calpomat-4566_hifi");
             MediaPlayer.Play(hellRaider);
+            //hellRaider.Play();
+            gunfireSound = Content.Load<Song>("3-burst-Diode111-8773_hifi");
+        }
+
+        public void playGunfire()
+        {
+            MediaPlayer.Play(gunfireSound);
         }
 
         /// <summary>
@@ -107,7 +116,8 @@ namespace SoS
             playerMovement.Add(new List<Texture2D> {Content.Load<Texture2D>("Player/frame 2_walking"),
                 Content.Load<Texture2D>("Player/frame 1 and 3_walking"), Content.Load<Texture2D>("Player/frame 4_walking")});
             playerMovement.Add(new List<Texture2D> {Content.Load<Texture2D>("Player/aiming"),
-                Content.Load<Texture2D>("Player/frame 2_firing"), Content.Load<Texture2D>("Player/frame 1 and 3_firing")});
+                Content.Load<Texture2D>("Player/frame 2_firing"), Content.Load<Texture2D>("Player/firing gunfire 1"), Content.Load<Texture2D>("Player/firing gunfire 2"),
+                Content.Load<Texture2D>("Player/frame 2_firing"), Content.Load<Texture2D>("Player/frame 1 and 3_firing"), Content.Load<Texture2D>("Player/aiming")});
             playerMovement.Add(new List<Texture2D> {Content.Load<Texture2D>("Player/dead")});
             player.loadMovementList(playerMovement);
 
@@ -364,6 +374,7 @@ namespace SoS
                         break;
                     case playState:
                         spriteBatch.Draw(BG, Vector2.Zero, Color.White);
+                        MediaPlayer.Stop();
                         break;
                     case pausedState:
                         spriteBatch.Draw(BG, Vector2.Zero, Color.White);
