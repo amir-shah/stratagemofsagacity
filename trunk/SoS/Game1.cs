@@ -98,7 +98,7 @@ namespace SoS
             mouseSprite = Content.Load<Texture2D>("crosshair");
             enemySprite = Content.Load<Texture2D>("Enemy/standing");
             playerSprite = Content.Load<Texture2D>("Player/standing");
-            map = new Map(10000, 10000, background);
+            map = new Map("F:/XNA/SoS/SoS/Content/map.txt", graphics, wallSprite);
             List<Obstacle> walls = new List<Obstacle>();
             walls.Add(new Wall(wallSprite, 10, 10, 2, 5));
             walls.Add(new Wall(wallSprite, 100, 300, 10, 1));

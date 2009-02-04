@@ -62,13 +62,13 @@ namespace SoS
             game = _game;
         }
 
-        public Projectile(string name, Rectangle _picRect, float _rotation, int _velocity, float _power, float _speed, Color _color)
+        public Projectile(string name, Rectangle _picRect, float _rotation, int _velocity, float _power, Color _color)
         {
             picName = name;
             picRect = _picRect;
             //prevPicRect = _picRect;??????
             rotation = _rotation;
-            speed = _speed;
+            //speed = _speed;
             power = _power;
             color = _color;
         }
