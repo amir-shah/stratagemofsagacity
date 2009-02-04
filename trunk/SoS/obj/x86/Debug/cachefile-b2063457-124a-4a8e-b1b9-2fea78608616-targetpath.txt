@@ -33,6 +33,8 @@ Content\Gun Fire\frame2_good fire.xnb
 Content\TimesNewRoman.xnb
 Content\hellRaider.xnb
 Content\hellRaider.wma
+<<<<<<< .mine
+=======
 Content\SoS Protype Music.xnb
 Content\Player\firing gunfire 1.xnb
 Content\Player\firing gunfire 2.xnb
@@ -44,3 +46,4 @@ Content\Moonli-SLrec-6885_hifi.xnb
 Content\Moonli-SLrec-6885_hifi.wma
 Content\_Shif-Edgen-6832_hifi.xnb
 Content\_Shif-Edgen-6832_hifi.wma
+>>>>>>> .r17
