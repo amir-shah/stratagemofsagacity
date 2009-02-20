@@ -99,7 +99,7 @@ namespace SoS
                     selected++;
                 if (selected == menuItems.Length)
                     selected = 0;
-                Console.WriteLine(selected);
+                //Console.WriteLine(selected);
             }
 
             else if (oldKeyState.IsKeyUp(Keys.Up) && newKeyState.IsKeyDown(Keys.Up))
@@ -108,7 +108,7 @@ namespace SoS
                     selected = menuItems.Length;
                 if (selected > 0)
                     selected--;
-                Console.WriteLine(selected);
+                //Console.WriteLine(selected);
             }
 
             if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))

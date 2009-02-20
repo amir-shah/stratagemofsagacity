@@ -16,7 +16,7 @@ namespace SoS
         List<List<Texture2D>> playerMovement;
         Point playerMovementState = new Point(0, 0);
 
-        public Player(int x, int y, Texture2D _pic, Game1 _game) : base(x,y,_pic)
+        public Player(float x,float y, Texture2D _pic,float _scale,Game1 _game) : base(x,y,_pic,_scale)
         {
            xVel = 0f; yVel = 0f;
            game = _game;
@@ -29,8 +29,8 @@ namespace SoS
             game = _game;
             isMouseDown = false;
         }
-        public Player(Texture2D _pic, Rectangle _picRect, float _rotation, int _velocity, float _health, Color _color, Game1 _game)
-                    : base(_pic,_picRect,_rotation,_velocity,_health,_color)
+        public Player(Texture2D _pic, Rectangle _picRect, float _rotation, float _health, Color _color, Game1 _game)
+                    : base(_pic,_picRect,_rotation,_health,_color)
         {
             xVel = 0f; yVel = 0f;
             game = _game;
@@ -42,15 +42,15 @@ namespace SoS
         }
         public override void UpdateMove(GameTime gameTime)
         {
-            int elapsedTime = (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            double elapsedTime = gameTime.ElapsedGameTime.TotalMilliseconds;
             //MouseState mouse = Mouse.GetState();
             //rotation = -(float)Math.Atan2((((picRect.X + (picRect.Width / 2))) - mouse.X) * (Math.PI / 180), (((picRect.Y + (picRect.Height / 2))) - mouse.Y) * (Math.PI / 180));
             KeyboardState keyState = Keyboard.GetState();
             MouseState mouse = Mouse.GetState();
-            int mX, mY, pX, pY;
+            float mX, mY, pX, pY;
             mX = mouse.X; mY = mouse.Y;
-            pX = picRect.X - game.getCamera().X; pY = picRect.Y - game.getCamera().Y;
-            rotation = -(float)Math.Atan2(((double)pX - (double)mX), ((double)pY - (double)mY));
+            pX = pos.X - game.getCamera().X; pY = pos.Y - game.getCamera().Y;
+            rotation = -(float)Math.Atan2((double)(pX - mX),(double)(pY -mY));
             
             xVel = 0f; yVel = 0f;
             if (keyState.IsKeyDown(Keys.W) && canMoveUp)
@@ -65,7 +65,8 @@ namespace SoS
                         playerMovementState.Y = 0;
                     }
                     setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
-                    picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+                    width = (int)(pic.Width * scale); height = (int)(pic.Height * scale);
+                    picRect = new Rectangle((int)pos.X, (int)pos.Y, (int)width, (int)height);
                 }
             }
             if (keyState.IsKeyDown(Keys.S) && canMoveDown)
@@ -80,7 +81,8 @@ namespace SoS
                         playerMovementState.Y = 0;
                     }
                     setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
-                    picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+                    width = (int)(pic.Width * scale); height = (int)(pic.Height * scale);
+                    picRect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
                 }
             }
             if (keyState.IsKeyDown(Keys.A) && canMoveLeft)
@@ -95,7 +97,8 @@ namespace SoS
                         playerMovementState.Y = 0;
                     }
                     setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
-                    picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+                    width = (int)(pic.Width * scale); height = (int)(pic.Height * scale);
+                    picRect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
                 }
             }
             if (keyState.IsKeyDown(Keys.D) && canMoveRight)
@@ -110,7 +113,8 @@ namespace SoS
                         playerMovementState.Y = 0;
                     }
                     setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
-                    picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+                    width = (int)(pic.Width * scale); height = (int)(pic.Height * scale);
+                    picRect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
                 //}
             }
             if (keyState.IsKeyUp(Keys.W) && keyState.IsKeyUp(Keys.A) && keyState.IsKeyUp(Keys.S) && keyState.IsKeyUp(Keys.D))
@@ -125,9 +129,9 @@ namespace SoS
             {
                 if (!isMouseDown)
                 {
-                    int shotX = picRect.X + (int)((picRect.Width + 20) * Math.Sin(rotation));
-                    int shotY = picRect.Y + (int)((picRect.Height + 20)* -Math.Cos(rotation));
-                    Projectile shot = new Projectile("pShot", new Rectangle(shotX, shotY, 20, 20), .3f, color,game);
+                    float shotX = pos.X + (float)((width + 20) * Math.Sin(rotation));
+                    float shotY = pos.Y + (float)((height + 20)* -Math.Cos(rotation));
+                    Projectile shot = new Projectile(shotX,shotY,"pShot", .3f,21,21,game);
                     shot.setRotation(rotation);
                     game.addProjectile(shot);
                     //Graphics
@@ -140,7 +144,8 @@ namespace SoS
                             playerMovementState.Y = 0;
                         }
                         setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
-                        picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+                        width = (int)(pic.Width * scale); height = (int)(pic.Height * scale);
+                        picRect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
                     }
                     game.playGunfire();
                     isMouseDown = true;
@@ -152,28 +157,29 @@ namespace SoS
                 playerMovementState.X = 0;
                 playerMovementState.Y = 0;
                 setSprite(playerMovement[playerMovementState.X][playerMovementState.Y]);
-                picRect = new Rectangle(picRect.X, picRect.Y, pic.Width / 2, pic.Height / 2);
+                width = (int)(pic.Width * scale); height = (int)(pic.Height * scale);
+                picRect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
             }
 
-            picRect.X += (int)(xVel * elapsedTime);
-            picRect.Y += (int)(yVel * elapsedTime);
-            if (picRect.X <= 0)
+            pos.X += (float)(xVel * elapsedTime);
+            pos.Y += (float)(yVel * elapsedTime);
+            if (pos.X <= 0)
             {
-                picRect.X = 0;
+                pos.X = 0;
             }
-            if (picRect.Y <= 0)
+            if (pos.Y <= 0)
             {
-                picRect.Y = 0;
+                pos.Y = 0;
             }
-            if (picRect.X + pic.Width >= Game1.map.getWidth())
+            if (pos.X + width >= Game1.map.getWidth())
             {
-                picRect.X = Game1.map.getWidth() - pic.Width;
+                pos.X = Game1.map.getWidth() - width;
             }
-            if (picRect.Y + pic.Height >= Game1.map.getHeight())
+            if (pos.Y + height >= Game1.map.getHeight())
             {
-                picRect.Y = Game1.map.getHeight() - pic.Height;
+                pos.Y = Game1.map.getHeight() - height;
             }
-
+            picRect.X = (int)pos.X; picRect.Y = (int)pos.Y;
             canMoveUp = true; canMoveDown = true; canMoveLeft = true; canMoveRight = true;
         }
         public override Being Predict(GameTime gameTime)
@@ -186,5 +192,6 @@ namespace SoS
         {
             return speed;
         }
+        public override void collidedWith(Collideable other) { }
     }
 }

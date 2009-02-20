@@ -9,10 +9,10 @@ namespace SoS
 {
     class BoxBeing : Being
     {
-        int xInit, yInit;
+        float xInit, yInit;
         int sideLength;
 
-        public BoxBeing(int x, int y, Texture2D _pic, int side) : base(x,y,_pic)
+        public BoxBeing(float x, float y, Texture2D _pic,float _scale, int side) : base(x,y,_pic,_scale)
         {
             //defaults
             xInit = x;
@@ -22,60 +22,66 @@ namespace SoS
 
         public override void UpdateMove(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            int elapsedTime = (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            double elapsedTime = gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            picRect.X += (int)(xVel * elapsedTime);
-            picRect.Y += (int)(yVel * elapsedTime);
+           pos.X += (float)(xVel * elapsedTime);
+           pos.Y += (float)(yVel * elapsedTime);
 
-            if ((picRect.X - xInit >= sideLength && xVel > 0)
-                || ((picRect.X - xInit <= 0) && (xVel < 0)))
+            if ((pos.X - xInit >= sideLength && xVel > 0)
+                || ((pos.X - xInit <= 0) && (xVel < 0)))
             {
-                if ((picRect.X - xInit >= sideLength && xVel > 0))
+                if ((pos.X - xInit >= sideLength && xVel > 0))
                 {
-                    picRect.Y += (picRect.X - xInit) - sideLength;
-                    picRect.X = xInit + sideLength;
+                    pos.Y += (pos.X - xInit) - sideLength;
+                    pos.X = xInit + sideLength;
                 }
-                else if ((picRect.X - xInit <= 0) && (xVel < 0))
+                else if ((pos.X - xInit <= 0) && (xVel < 0))
                 {
-                    picRect.Y += picRect.X - xInit;
-                    picRect.X = xInit;
+                    pos.Y += pos.X - xInit;
+                    pos.X = xInit;
                 }
                 yVel = xVel;
                 xVel = 0;
                 
             }
-            if ((picRect.Y - yInit >= sideLength && yVel > 0)
-                || ((picRect.Y - yInit <= 0) && (yVel < 0)))
+            if ((pos.Y - yInit >= sideLength && yVel > 0)
+                || ((pos.Y - yInit <= 0) && (yVel < 0)))
             {
-                if (picRect.Y - yInit >= sideLength && yVel > 0)
+                if (pos.Y - yInit >= sideLength && yVel > 0)
                 {
-                    picRect.X -= (picRect.Y - yInit) - sideLength;
-                    picRect.Y = yInit + sideLength;
+                    pos.X -= (pos.Y - yInit) - sideLength;
+                    pos.Y = yInit + sideLength;
                 }
-                else if ((picRect.Y - yInit <= 0) && (yVel < 0))
+                else if ((pos.Y - yInit <= 0) && (yVel < 0))
                 {
-                    picRect.X -= picRect.Y - yInit;
-                    picRect.Y = yInit;
+                    pos.X -= pos.Y - yInit;
+                    pos.Y = yInit;
                 }
                 xVel = -yVel;
                 yVel = 0;
                 
             }
+            picRect.X = (int)pos.X;
+            picRect.Y = (int)pos.Y;
 
 
         }
-        public void setOrigin(Point orig)
+        public void setOrigPoint(Vector2 orig)
         {
             xInit = orig.X;
             yInit = orig.Y;
         }
         public override Being Predict(GameTime gameTime)
         {
-            BoxBeing futureSelf = new BoxBeing(picRect.X, picRect.Y, pic,sideLength);
+            BoxBeing futureSelf = new BoxBeing(pos.X, pos.Y,pic,scale,sideLength);
             futureSelf.setVelocity(new Vector2(xVel, yVel));
-            futureSelf.setOrigin(new Point(xInit, yInit));
+            futureSelf.setOrigPoint(new Vector2(xInit, yInit));
             futureSelf.UpdateMove(gameTime);
             return (Being)futureSelf;
+        }
+        public override Matrix getMatrix()
+        {
+            return Matrix.CreateTranslation(new Vector3(pos, 0.0f));
         }
     }
 }

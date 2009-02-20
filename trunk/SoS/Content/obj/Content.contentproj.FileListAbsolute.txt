@@ -1,4 +1,4 @@
-F:\USB Drive\XNA\Projects\SoS\SoS\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\USB Drive\XNA\Projects\SoS\SoS\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 F:\XNA\SoS\SoS\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 G:\SoS\trunk\SoS\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\USB Drive\XNA\Projects\SoS\SoS\Content\obj\x86\Debug\ResolveAssemblyReference.cache
