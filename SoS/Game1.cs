@@ -26,7 +26,7 @@ namespace SoS
         Texture2D wallSprite, background, mouseSprite, enemySprite, playerSprite;
         Rectangle camera = new Rectangle(0,0, WIDTH, HEIGHT);
         int xCamBuffer = 100, yCamBuffer = 100; //cameraSpeed = 1;
-        const int future = 1000;
+        const int future = 2000;
         public static Texture2D pixel;
         public static int WIDTH = 800, HEIGHT = 537;
         int miniNum = 3;
@@ -98,17 +98,16 @@ namespace SoS
             mouseSprite = Content.Load<Texture2D>("crosshair");
             enemySprite = Content.Load<Texture2D>("Enemy/standing");
             playerSprite = Content.Load<Texture2D>("Player/standing");
-            map = new Map("F:/XNA/SoS/SoS/Content/map.txt", graphics, wallSprite);
+            map = new Map("F:/XNA/Sos2/trunk/SoS/Content/map.txt", graphics, wallSprite);
             List<Obstacle> walls = new List<Obstacle>();
-            walls.Add(new Wall(wallSprite, 10, 10, 2, 5));
-            walls.Add(new Wall(wallSprite, 100, 300, 10, 1));
-            walls.Add(new Wall(wallSprite, 1000, 100, 3, 3));
-            walls.Add(new Wall(wallSprite, 100, 700, 1, 1));
+            //walls.Add(new Wall(wallSprite, 10, 10, 2, 5));
+            //walls.Add(new Wall(wallSprite, 100, 300, 10, 1));
+            //walls.Add(new Wall(wallSprite, 1000, 100, 3, 3));
+            //walls.Add(new Wall(wallSprite, 100, 700, 1, 1));
             map.loadObstacles(walls);
-            //player = new Player(playerSprite, new Rectangle(100,100,playerSprite.Width/2,playerSprite.Height/2),Color.White, this);
-            player = new Player(100f, 100f, playerSprite, 1f, this);
-            beings.Add(new Being(110,10,enemySprite,1f));
-            beings.Add(new BoxBeing(950, 60, enemySprite,1f, 200));
+            player = new Player(playerSprite, new Rectangle(100,100,playerSprite.Width/2,playerSprite.Height/2),Color.White, this);
+            beings.Add(new Being(100, 10, enemySprite));
+            beings.Add(new BoxBeing(950, 60, enemySprite, 200));
             beings.Add(player);
             
             //Movement
@@ -166,7 +165,7 @@ namespace SoS
                 pauseHeld = false;
             if (stateMachine.getState() == playState)
             {
-                double elapsedTime = gameTime.ElapsedGameTime.TotalMilliseconds;
+                int elapsedTime = (int)gameTime.ElapsedGameTime.TotalMilliseconds;
                 foreach (Being b in beings)
                 {
                     b.UpdateMove(gameTime);
@@ -176,13 +175,13 @@ namespace SoS
                     p.UpdateMove(gameTime);
                 }
                 mouseState = Mouse.GetState();
-                if (player.getPos(camera).X < xCamBuffer)
+                if (player.getPoint(camera).X < xCamBuffer)
                     camera.X -= (int)(player.getSpeed() * elapsedTime); // xCamBuffer - mouseState.X;
-                if (player.getPos(camera).X > WIDTH - xCamBuffer)
+                if (player.getPoint(camera).X > WIDTH - xCamBuffer)
                     camera.X += (int)(player.getSpeed() * elapsedTime); // mouseState.X - (WIDTH - xCamBuffer);
-                if (player.getPos(camera).Y < yCamBuffer)
+                if (player.getPoint(camera).Y < yCamBuffer)
                     camera.Y -= (int)(player.getSpeed() * elapsedTime); //yCamBuffer - mouseState.Y;
-                if (player.getPos(camera).Y > HEIGHT - yCamBuffer)
+                if (player.getPoint(camera).Y > HEIGHT - yCamBuffer)
                     camera.Y += (int)(player.getSpeed() * elapsedTime); // mouseState.Y - (HEIGHT - yCamBuffer);
                 if (camera.X < 0) camera.X = 0;
                 if (camera.X + WIDTH > map.getWidth()) camera.X = map.getWidth() - WIDTH;
@@ -209,35 +208,31 @@ namespace SoS
         {
             //put everything on screen in one list
             List<Collideable> all = addAll();
-             
+            
             for (int i = 0; i < all.Count; i++)
             {
                 for (int j = i + 1; j < all.Count; j++)
                 {
                     Collideable me = all[i];
                     Collideable him = all[j];
-                    if (him is Obstacle)
-                    {
-                        Collideable temp = me;
-                        me = him;
-                        him = temp;
-                    }
-                    if (me.collides(him))
-                    {
-                        him.collidedWith(me);
-                        me.collidedWith(him);
+                    //Console.WriteLine("Him: " + him.ToString() + " Me: " + me.ToString());
+                    //if (me.getQuad(me).Equals(him.getQuad(him)))
+                    //{
+                        //if (me.collides(him))
+                        //{
+                          //  him.collidedWith(me);
+                            //me.collidedWith(him);
 
-                    }
+                        //}
+                    //}
                 }
             }
+
+
         }
         private List<Collideable> addAll()
         {
             List<Collideable> all = new List<Collideable>();
-            foreach (Obstacle o in map.getObs())
-            {
-                all.Add(o);
-            }
             foreach (Being b in beings)
             {
                 all.Add(b);
@@ -245,6 +240,10 @@ namespace SoS
             foreach (Projectile p in projectiles)
             {
                 all.Add(p);
+            }
+            foreach (Obstacle o in map.getObs())
+            {
+                all.Add(o);
             }
             return all;
         }
@@ -259,7 +258,7 @@ namespace SoS
                     selected++;
                 if (selected == optionsMenuItems.Length)
                     selected = 0;
-                //Console.WriteLine(selected);
+                Console.WriteLine(selected);
             }
 
             else if (oldKeyState.IsKeyUp(Keys.Up) && newKeyState.IsKeyDown(Keys.Up))
@@ -268,7 +267,7 @@ namespace SoS
                     selected = optionsMenuItems.Length;
                 if (selected > 0)
                     selected--;
-                //Console.WriteLine(selected);
+                Console.WriteLine(selected);
             }
 
             if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
@@ -286,7 +285,7 @@ namespace SoS
                     selected++;
                 if (selected == optionsMenuItems.Length)
                     selected = 0;
-                //Console.WriteLine(selected);
+                Console.WriteLine(selected);
             }
 
             else if (oldKeyState.IsKeyUp(Keys.Up) && newKeyState.IsKeyDown(Keys.Up))
@@ -295,7 +294,7 @@ namespace SoS
                     selected = optionsMenuItems.Length;
                 if (selected > 0)
                     selected--;
-                //Console.WriteLine(selected);
+                Console.WriteLine(selected);
             }
 
             if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
@@ -313,7 +312,7 @@ namespace SoS
                     selected++;
                 if (selected == menuItems.Length)
                     selected = 0;
-                //Console.WriteLine(selected);
+                Console.WriteLine(selected);
             }
 
             else if (oldKeyState.IsKeyUp(Keys.Up) && newKeyState.IsKeyDown(Keys.Up))
@@ -322,7 +321,7 @@ namespace SoS
                     selected = menuItems.Length;
                 if (selected > 0)
                     selected--;
-                //Console.WriteLine(selected);
+                Console.WriteLine(selected);
             }
 
             if (oldKeyState.IsKeyUp(Keys.Enter) && newKeyState.IsKeyDown(Keys.Enter))
@@ -442,7 +441,7 @@ namespace SoS
                 foreach (Projectile p in projectiles)
                 {
                     Projectile fP = p.Predict(futureTime);
-                    if (fP.getRectangle().Intersects(camera))
+                    if (fP.intersects(camera))
                     {
                         fP.drawMini(spriteBatch, camera, miniMap);
                     }
