@@ -107,3 +107,69 @@ G:\SoS\trunk\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.wma
 G:\SoS\trunk\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.wma
 G:\SoS\trunk\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.wma
 G:\SoS\trunk\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.wma
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\aiming.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\aiming.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\dead.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 1 and 3_firing.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 1 and 3_walking.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 2_firing.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 2_walking.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 4_walking.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\standing.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\aiming.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\dead.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 1 and 3_fire.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 1 and 3_walking.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 2_fire.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 2_walking.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 4_walking.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\hit.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\standing.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Gun Fire\frame1_enemy fire.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Gun Fire\frame1_good fire.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Gun Fire\frame2_enemy fire.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Gun Fire\frame2_good fire.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\firing gunfire 1.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\firing gunfire 2.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\SoS Protype Music.xnb
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.wma
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.wma
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.wma
+F:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.wma
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\aiming.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\aiming.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\dead.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 1 and 3_firing.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 1 and 3_walking.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 2_firing.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 2_walking.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\frame 4_walking.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\standing.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\aiming.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\dead.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 1 and 3_fire.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 1 and 3_walking.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 2_fire.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 2_walking.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\frame 4_walking.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\hit.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Enemy\standing.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Gun Fire\frame1_enemy fire.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Gun Fire\frame1_good fire.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Gun Fire\frame2_enemy fire.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Gun Fire\frame2_good fire.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\firing gunfire 1.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Player\firing gunfire 2.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\SoS Protype Music.xnb
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\3-burst-Diode111-8773_hifi.wma
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Final-calpomat-4566_hifi.wma
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\Moonli-SLrec-6885_hifi.wma
+E:\USB Drive\XNA\Projects\SoS\SoS\bin\x86\Debug\Content\_Shif-Edgen-6832_hifi.wma

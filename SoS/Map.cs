@@ -1,18 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Net;
+using Microsoft.Xna.Framework.Storage;
 
 namespace SoS
 {
     public class Map
     {
         int width, height;
+        
         Color backgroundColor = Color.Beige;
         Texture2D background;
         Rectangle spriteRect;
+        int mapHeight, mapWidth;
         List<Obstacle> obs = new List<Obstacle>();
+        public Map(String _map, GraphicsDeviceManager _graphics, Texture2D wallSprite){
+            readMapFromFile(_map, _graphics, wallSprite);
+        }
+
         public Map(int _width, int _height, Color _background)
         {
             width = _width;
@@ -47,7 +59,7 @@ namespace SoS
             }
             foreach (Obstacle o in obs)
             {
-                if (o.getRectangle().Intersects(scope))
+                if (o.getRectangle().Intersects((scope)))
                     o.draw(batch, scope);
             }
         }
@@ -69,10 +81,6 @@ namespace SoS
                     o.drawMini(batch,scope,mini);
             }
         }
-        public bool remove(Obstacle ob)
-        {
-            return obs.Remove(ob);
-        }
         public int getWidth()
         {
             return width;
@@ -81,9 +89,51 @@ namespace SoS
         {
             return height;
         }
+        protected void readMapFromFile(String _map, GraphicsDeviceManager graphics, Texture2D wallSprite)
+        {
+            StreamReader sr = File.OpenText(_map); //Open the text file
+            String[,] map;
+            mapWidth = Convert.ToInt32(sr.ReadLine()); //Get the height
+            mapHeight = Convert.ToInt32(sr.ReadLine()); //Get the width
+            height = mapHeight; //Convert to height in pixels
+            width = mapWidth;
+            //if (height < 450)
+              //  height = 450;
+            //if (width < 450)
+              //  width = 450;//Convert to width in pixels
+            //graphics.PreferredBackBufferHeight = height; //Change viewport height based on map file height
+            //graphics.PreferredBackBufferWidth = width; //Change viewport width based on map file width
+            map = new String[mapHeight, mapWidth]; //Initialize the 2d array of Strings
+            for (int i = 0; i < mapHeight; i++) //Go through the whole map file storing each individual
+            //character as a string in "map"
+            {
+                String temp = sr.ReadLine();
+                for (int j = 0; j < mapWidth; j++)
+                {
+                    map[i, j] = temp.Substring(j, 1);
+                }
+            }
+            sr.Close(); //Close connection to map file
+
+            for (int i = 0; i < mapHeight; i += wallSprite.Width) //Go through the map array and translate into the player
+            //object and the array of GameObjects
+            {
+                for (int j = 0; j < mapWidth; j += wallSprite.Height)
+                {
+                    if (map[i, j].Equals("x"))
+                        obs.Add(new Wall(wallSprite, i, j, 1, 1)); 
+                    //if (map[i, j].Equals("1"))
+                       // player1 = new Player(playerTexture, new Rectangle(j * 30, i * 30, 30, 30));
+                }
+            }
+        }
         public List<Obstacle> getObs()
         {
             return obs;
+        }
+        public bool remove(Obstacle o)
+        {
+            return obs.Remove(o);
         }
     }
 }

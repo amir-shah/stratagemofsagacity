@@ -11,77 +11,93 @@ namespace SOS
 {
     public class Being : Collideable
     {
-        protected Texture2D pic;
-        //Rectangle prevPicRect;????????
+        //protected Texture2D pic;
+        //protected Vector2 pos;
         protected float xVel = .1f, yVel = 0f;
         protected bool canMoveUp = true, canMoveDown = true, canMoveLeft = true, canMoveRight = true;
-        protected float rotation; //in degrees
+        //protected float rotation; //in degrees
         protected Color color;
         protected float health;
-        
+        //protected float scale;
+        protected int width, height;
+        bool showRect = false;
         KeyboardState keyboard;
 
-        public Being(int x, int y, Texture2D _pic)
+        public Being(float x, float y, Texture2D _pic,float _scale)
         {
             //defaults
             pic = _pic;
-            picRect = new Rectangle(x, y, pic.Width/2, pic.Height/2);
+            pos = new Vector2(x, y);
+            
+            scale = _scale;
+            width = (int)(pic.Width * scale); height = (int)(pic.Height * scale);
             //prevPicRect = new Rectangle(x, y, 50, 50); ?????
             rotation = 0.0f;
             //velocity = 0;
             health = 1.0f;
             color = Color.White;
+            picRect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
+            origin = new Vector2(pic.Width / 2f, pic.Height / 2f);
         }
+
         public Being(Texture2D _pic, Rectangle rect, Color c)
         {
             pic = _pic;
-            picRect = rect;
+            pos = new Vector2((float)rect.X, (float)rect.Y);
             rotation = 0.0f;
+            width = rect.Width; height = rect.Height;
+            scale = (((float)width/pic.Width) + ((float)height/pic.Height)) / 2.0f;
             //velocity = 0;
             health = 1.0f;
             color = c;
+            picRect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
+            origin = new Vector2(pic.Width / 2f, pic.Height / 2f);
         }
 
-        public Being(Texture2D _pic, Rectangle _picRect, float _rotation, int _velocity, float _health, Color _color)
+        public Being(Texture2D _pic, Rectangle _picRect, float _rotation,float _health, Color _color)
         {
             pic = _pic;
-            picRect = _picRect;
-            //prevPicRect = _picRect;??????
+            pos = new Vector2((float)_picRect.X, (float)_picRect.Y);
+            width = _picRect.Width; height = _picRect.Height;
+            scale = (((float)width / pic.Width) + ((float)height / pic.Height)) / 2.0f;
             rotation = _rotation;
            // velocity = _velocity;
             health = _health;
             color = _color;
+            picRect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
+            origin = new Vector2(pic.Width / 2f, pic.Height / 2f);
         }
         public virtual void UpdateMove(GameTime gameTime)
         {
             
-            int elapsedTime = (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            double elapsedTime = gameTime.ElapsedGameTime.TotalMilliseconds;
             if((xVel > 0 && canMoveRight) || (xVel < 0 && canMoveLeft))
-            picRect.X += (int)(xVel * elapsedTime);
+            pos.X += (float)(xVel * elapsedTime);
             if((yVel > 0 && canMoveDown) || (yVel < 0 && canMoveUp))
-            picRect.Y += (int)(yVel * elapsedTime);
-            if (picRect.X <= 0)
+            pos.Y += (float)(yVel * elapsedTime);
+            if (pos.X <= 0)
             {
-                picRect.X += 2 * (0 - picRect.X);
+                pos.X += 2 * (0 - pos.X);
                 
                 xVel *= -1f;
             }
-            if (picRect.Y <= 0)
+            if (pos.Y <= 0)
             {
-                picRect.Y += 2 * (0 - picRect.Y);
+                pos.Y += 2 * (0 - pos.Y);
                 yVel *= -1f;
             }
-            if (picRect.X + pic.Width >= Game1.map.getWidth())
+            if (pos.X + pic.Width >= Game1.map.getWidth())
             {
-                picRect.X -= 2 * (picRect.X + pic.Width - Game1.map.getWidth());
+                pos.X -= 2 * (pos.X + picRect.Width - Game1.map.getWidth());
                 xVel *= -1f;
             }
-            if (picRect.Y + pic.Height >= Game1.map.getHeight())
+            if (pos.Y + pic.Height >= Game1.map.getHeight())
             {
-                picRect.Y -= 2 * (picRect.Y + pic.Height - Game1.map.getHeight());
+                pos.Y -= 2 * (pos.Y + picRect.Height - Game1.map.getHeight());
                 yVel *= -1f;
             }
             canMoveUp = true; canMoveDown = true; canMoveLeft = true; canMoveRight = true;
+            picRect.X = (int)pos.X; picRect.Y = (int)pos.Y;
             //?????????????????????????????????????
             /*if (gameTime.TotalGameTime.Seconds >= 2)
             {
@@ -117,9 +133,24 @@ namespace SOS
 
         public virtual void Draw(Rectangle scope, SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(pic, getPos(scope), null, color, rotation,origin,scale, SpriteEffects.None, 0f);
+            if (showRect)
+            {
+                Rectangle rect = getBoundRect();
+                Rectangle rect2 = picRect;
+                spriteBatch.Draw(pic, new Rectangle(rect.Left, rect.Top, rect.Width, 5), Color.Black);
+                spriteBatch.Draw(pic, new Rectangle(rect.Left, rect.Bottom, rect.Width, 5), Color.Black);
+                spriteBatch.Draw(pic, new Rectangle(rect.Left, rect.Top, 5, rect.Height), Color.Black);
+                spriteBatch.Draw(pic, new Rectangle(rect.Right, rect.Top, 5, rect.Height), Color.Black);
+
+                spriteBatch.Draw(pic, new Rectangle(rect2.Left, rect2.Top, rect2.Width, 5), Color.Red);
+                spriteBatch.Draw(pic, new Rectangle(rect2.Left, rect2.Bottom, rect2.Width, 5), Color.Red);
+                spriteBatch.Draw(pic, new Rectangle(rect2.Left, rect2.Top, 5, rect2.Height), Color.Red);
+                spriteBatch.Draw(pic, new Rectangle(rect2.Right, rect2.Top, 5, rect2.Height), Color.Red);
+            }
             //spriteBatch.Draw(pic, new Rectangle(picRect.X - scope.X, picRect.Y - scope.Y, pic.Width, pic.Height), Color.White);
-            spriteBatch.Draw(pic,new Rectangle(picRect.X - scope.X, picRect.Y - scope.Y, picRect.Width, picRect.Height), null, 
-                            color, rotation,new Vector2(pic.Width/2,pic.Height/2), SpriteEffects.None, 0f);
+            //spriteBatch.Draw(pic,new Rectangle(picRect.X - scope.X, picRect.Y - scope.Y, picRect.Width, picRect.Height), null, 
+            //                color, rotation,new Vector2(pic.Width/2,pic.Height/2), SpriteEffects.None, 0f);
         }
 
         public virtual Being Predict(GameTime gameTime)
@@ -135,7 +166,7 @@ namespace SOS
             picRect = new Rectangle(_picRect.X, _picRect.Y, _picRect.Width, _picRect.Height);
 
             return being; */
-            Being futureSelf = new Being(picRect.X, picRect.Y, pic);
+            Being futureSelf = new Being(pos.X, pos.Y, pic,scale);
             futureSelf.setVelocity(new Vector2(xVel, yVel));
             futureSelf.UpdateMove(gameTime);
             return futureSelf;
@@ -144,33 +175,31 @@ namespace SOS
         {
             double factor = scope.Width / mini.Width;
             //batch.Draw(pic, new Rectangle((int)(mini.X + ((picRect.X - scope.X) / factor)), (int)(mini.Y + ((picRect.Y - scope.Y) / factor)), (int)(picRect.Width / factor), (int)(picRect.Height / factor)), Color.White);
-            batch.Draw(pic, new Rectangle((int)(mini.X + ((picRect.X - scope.X) / factor)), (int)(mini.Y + ((picRect.Y - scope.Y) / factor)), (int)(picRect.Width / factor), (int)(picRect.Height / factor)), null,
-                            color, rotation, new Vector2(pic.Width / 2, pic.Height / 2), SpriteEffects.None, 0f);
-        }
-        public override bool collides(Collideable other)
-        {
-            return picRect.Intersects(other.getRectangle());
+           // batch.Draw(pic, new Rectangle((int)(mini.X + ((picRect.X - scope.X) / factor)), (int)(mini.Y + ((picRect.Y - scope.Y) / factor)), (int)(picRect.Width / factor), (int)(picRect.Height / factor)), null,
+            //                color, rotation, new Vector2(pic.Width / 2, pic.Height / 2), SpriteEffects.None, 0f);
+            batch.Draw(pic, new Vector2((float)(mini.X + ((pos.X - scope.X) / factor)),(float)( mini.Y + ((pos.Y - scope.Y) / factor))), null, color, rotation, new Vector2(pic.Width / 2, pic.Height / 2),(float)(scale/factor), SpriteEffects.None, 0f);
         }
         public override void collidedWith(Collideable other)
         {
-            setVelocity(new Vector2(0, 0));
+            canMoveUp = false; canMoveDown = false; canMoveLeft = false; canMoveRight = false;
+            //setVelocity(new Vector2(0, 0));
         }
         public void setVelocity(Vector2 vel)
         {
             xVel = vel.X;
             yVel = vel.Y;
         }
-        public Point getPoint()//get actual point on Map
+        public Vector2 getVelocity()
         {
-            return new Point(picRect.X, picRect.Y);
+            return new Vector2(xVel, yVel);
         }
-        public Point getPoint(Rectangle scope)//get point within scope
+        public Vector2 getPos()//get actual point on Map
         {
-            return new Point(picRect.X - scope.X, picRect.Y - scope.Y);
+            return pos;
         }
-        public void setRotation(float angle)
+        public Vector2 getPos(Rectangle scope)//get point within scope
         {
-            rotation = angle;
+            return new Vector2(pos.X - scope.X, pos.Y - scope.Y);
         }
         public void setMoveUp(bool b)
         {
