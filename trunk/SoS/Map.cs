@@ -59,7 +59,7 @@ namespace SoS
             }
             foreach (Obstacle o in obs)
             {
-                if (o.getRectangle().Intersects((scope)))
+                if (o.getRectangle().Intersects(scope))
                     o.draw(batch, scope);
             }
         }
@@ -92,11 +92,12 @@ namespace SoS
         protected void readMapFromFile(String _map, GraphicsDeviceManager graphics, Texture2D wallSprite)
         {
             StreamReader sr = File.OpenText(_map); //Open the text file
+            Console.Write(_map);
             String[,] map;
             mapWidth = Convert.ToInt32(sr.ReadLine()); //Get the height
             mapHeight = Convert.ToInt32(sr.ReadLine()); //Get the width
-            height = mapHeight; //Convert to height in pixels
-            width = mapWidth;
+            height = mapHeight * 4; //Convert to height in pixels
+            width = mapWidth * 4;
             //if (height < 450)
               //  height = 450;
             //if (width < 450)
@@ -104,36 +105,49 @@ namespace SoS
             //graphics.PreferredBackBufferHeight = height; //Change viewport height based on map file height
             //graphics.PreferredBackBufferWidth = width; //Change viewport width based on map file width
             map = new String[mapHeight, mapWidth]; //Initialize the 2d array of Strings
-            for (int i = 0; i < mapHeight; i++) //Go through the whole map file storing each individual
+            for (int i = 0; i < mapHeight - 1; i++) //Go through the whole map file storing each individual
             //character as a string in "map"
             {
                 String temp = sr.ReadLine();
+                Char[] tempArray = temp.ToCharArray();
                 for (int j = 0; j < mapWidth; j++)
                 {
-                    map[i, j] = temp.Substring(j, 1);
+                    map[i, j] = tempArray[j].ToString();
+                    //Console.Write(map[i, j]);
                 }
+                //Console.WriteLine(" ");
             }
             sr.Close(); //Close connection to map file
-
-            for (int i = 0; i < mapHeight; i += wallSprite.Width) //Go through the map array and translate into the player
+            int currentX = 0;
+            int currentY = 0;
+            for (int i = 0; currentY < 300; i += wallSprite.Height) //Go through the map array and translate into the player
             //object and the array of GameObjects
             {
-                for (int j = 0; j < mapWidth; j += wallSprite.Height)
+                for (int j = 0; currentX < 300; j += wallSprite.Width)
                 {
-                    if (map[i, j].Equals("x"))
-                        obs.Add(new Wall(wallSprite, i, j, 1, 1)); 
-                    //if (map[i, j].Equals("1"))
-                       // player1 = new Player(playerTexture, new Rectangle(j * 30, i * 30, 30, 30));
+                    if (map[currentX, currentY].Equals("x"))
+                        obs.Add(new Wall(wallSprite, i, j, 1, 1));
+                    currentX++;
                 }
+                currentX = 0;
+                currentY++;
+                
             }
+            Console.WriteLine("Map Done");
+            
         }
+
         public List<Obstacle> getObs()
         {
             return obs;
         }
-        public bool remove(Obstacle o)
+        public bool remove(Obstacle ob)
         {
-            return obs.Remove(o);
+            return obs.Remove(ob);
         }
+        
     }
 }
+
+
+
