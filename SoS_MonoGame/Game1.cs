@@ -55,15 +55,16 @@ namespace SoS
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = WIDTH;
             graphics.PreferredBackBufferHeight = HEIGHT;
-            hellRaider = Content.Load<Song>("Final-calpomat-4566_hifi");
-            MediaPlayer.Play(hellRaider);
-            //hellRaider.Play();
-            gunfireSound = Content.Load<Song>("3-burst-Diode111-8773_hifi");
+            // Audio temporarily disabled - MP3 support issues on Windows
+            //hellRaider = Content.Load<Song>("Final-calpomat-4566_hifi");
+            //MediaPlayer.Play(hellRaider);
+            //gunfireSound = Content.Load<Song>("3-burst-Diode111-8773_hifi");
         }
 
         public void playGunfire()
         {
-            MediaPlayer.Play(gunfireSound);
+            // Audio temporarily disabled
+            //MediaPlayer.Play(gunfireSound);
         }
 
         /// <summary>

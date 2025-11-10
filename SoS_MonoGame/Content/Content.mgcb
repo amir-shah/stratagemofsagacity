@@ -13,12 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin 3-burst-Diode111-8773_hifi.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:3-burst-Diode111-8773_hifi.mp3
-
 #begin aiming.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -211,12 +205,6 @@
 /processorParam:TextureFormat=Color
 /build:Enemy/standing.png
 
-#begin Final-calpomat-4566_hifi.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Final-calpomat-4566_hifi.mp3
-
 #begin floor.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -276,18 +264,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Gun Fire/frame2_good fire.png
-
-#begin hellRaider.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:hellRaider.mp3
-
-#begin Moonli-SLrec-6885_hifi.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Moonli-SLrec-6885_hifi.mp3
 
 #begin Player/aiming.png
 /importer:TextureImporter
@@ -457,10 +433,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:turtle.png
-
-#begin _Shif-Edgen-6832_hifi.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:_Shif-Edgen-6832_hifi.mp3
 
