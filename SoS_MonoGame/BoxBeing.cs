@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SOS;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
