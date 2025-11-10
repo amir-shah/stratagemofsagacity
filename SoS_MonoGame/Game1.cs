@@ -47,7 +47,7 @@ namespace SoS
         String[] menuItems, optionsMenuItems;
         int selected = 0;
         InputState input = new InputState();
-        //SoundEffect hellRaider;
+        SoundEffect backgroundMusic;
         Song hellRaider, gunfireSound;
 
         public Game1()
@@ -56,15 +56,11 @@ namespace SoS
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = WIDTH;
             graphics.PreferredBackBufferHeight = HEIGHT;
-            // Audio temporarily disabled - MP3 support issues on Windows
-            //hellRaider = Content.Load<Song>("Final-calpomat-4566_hifi");
-            //MediaPlayer.Play(hellRaider);
-            //gunfireSound = Content.Load<Song>("3-burst-Diode111-8773_hifi");
         }
 
         public void playGunfire()
         {
-            // Audio temporarily disabled
+            // Gunfire sound disabled (MP3 needs conversion to OGG)
             //MediaPlayer.Play(gunfireSound);
         }
 
@@ -102,6 +98,11 @@ namespace SoS
             //walls.Add(new Wall(wallSprite, 1000, 100, 3, 3));
             //walls.Add(new Wall(wallSprite, 100, 700, 1, 1));
             map.loadObstacles(walls);
+
+            // Load and play background music (WAV file)
+            backgroundMusic = Content.Load<SoundEffect>("SoS Protype Music");
+            backgroundMusic.Play(0.5f, 0.0f, 0.0f); // volume, pitch, pan
+
             player = new Player(playerSprite, new Rectangle(100,100,playerSprite.Width/2,playerSprite.Height/2),Color.White, this);
             beings.Add(new Being(100, 10, enemySprite, 1.0f));
             beings.Add(new BoxBeing(950, 60, enemySprite, 1.0f, 200));
