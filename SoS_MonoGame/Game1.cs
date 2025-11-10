@@ -103,8 +103,8 @@ namespace SoS
             //walls.Add(new Wall(wallSprite, 100, 700, 1, 1));
             map.loadObstacles(walls);
             player = new Player(playerSprite, new Rectangle(100,100,playerSprite.Width/2,playerSprite.Height/2),Color.White, this);
-            beings.Add(new Being(100, 10, enemySprite));
-            beings.Add(new BoxBeing(950, 60, enemySprite, 200));
+            beings.Add(new Being(100, 10, enemySprite, 1.0f));
+            beings.Add(new BoxBeing(950, 60, enemySprite, 1.0f, 200));
             beings.Add(player);
             
             //Movement
@@ -368,7 +368,7 @@ namespace SoS
             if (stateMachine.getState() == menuState)
             {
                 graphics.GraphicsDevice.Clear(Color.Black);
-                spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+                spriteBatch.Begin();
                 switch (stateMachine.getState())
                 {
                     case menuState:
@@ -390,7 +390,7 @@ namespace SoS
             else if (stateMachine.getState() == optionsState)
             {
                 graphics.GraphicsDevice.Clear(Color.Black);
-                spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+                spriteBatch.Begin();
                 switch (stateMachine.getState())
                 {
                     case controlsState:
@@ -426,7 +426,7 @@ namespace SoS
                 {
                     spriteBatch.Draw(pixel, new Rectangle(miniMap.X, i, 1, 1), Color.Black);
                 }
-                GameTime futureTime = new GameTime(new TimeSpan(0, 0, 0, 0, future), new TimeSpan(0, 0, 0, 0, future), new TimeSpan(0, 0, 0, 0, future), new TimeSpan(0, 0, 0, 0, future));
+                GameTime futureTime = new GameTime(new TimeSpan(0, 0, 0, 0, future), new TimeSpan(0, 0, 0, 0, future));
                 foreach (Being b in beings)
                 {
                     Being fB = b.Predict(futureTime);

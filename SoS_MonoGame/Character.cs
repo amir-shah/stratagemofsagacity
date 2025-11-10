@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,13 +7,11 @@ using Microsoft.Xna.Framework;
 
 namespace SoS
 {
+    // Unused legacy class - kept for compatibility
     class Character : Being
     {
-        public Character()
+        public Character(Texture2D texture) : base(0, 0, texture, 1.0f)
         {
-            Content.RootDirectory = "Content";
-
-            pic = Content.Load<Texture2D>("WizardSquare");
             picRect = new Rectangle(0, 0, 50, 50);
         }
 

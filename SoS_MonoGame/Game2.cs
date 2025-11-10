@@ -134,7 +134,7 @@ namespace SoS
         protected override void Draw(GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(Color.Black);
-            spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+            spriteBatch.Begin();
             switch (stateMachine.getState())
             {
                 case menuState:

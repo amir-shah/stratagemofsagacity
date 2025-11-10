@@ -43,5 +43,20 @@ namespace SoS
             int numQuads = 100;
             return new Point(pos.X/100, pos.Y/100);
         }
+
+        public virtual void setRotation(float r)
+        {
+            rotation = r;
+        }
+
+        public virtual Point getPoint()
+        {
+            return new Point((int)pos.X, (int)pos.Y);
+        }
+
+        public virtual bool intersects(Rectangle rect)
+        {
+            return this.getRectangle().Intersects(rect);
+        }
     }
 }
