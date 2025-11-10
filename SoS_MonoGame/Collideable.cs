@@ -54,6 +54,11 @@ namespace SoS
             return new Point((int)pos.X, (int)pos.Y);
         }
 
+        public virtual Point getPoint(Rectangle scope)
+        {
+            return new Point((int)(pos.X - scope.X), (int)(pos.Y - scope.Y));
+        }
+
         public virtual bool intersects(Rectangle rect)
         {
             return this.getRectangle().Intersects(rect);
