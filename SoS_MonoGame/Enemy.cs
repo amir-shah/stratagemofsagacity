@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SOS
+namespace SoS
 {
     class Enemy : Being
     {
