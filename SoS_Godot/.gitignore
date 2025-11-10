@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+.mono/
+.import/
+
+# C# / .NET
+*.csproj.old
+*.dll
+*.pdb
+*.dylib
+*.suo
+*.user
+bin/
+obj/

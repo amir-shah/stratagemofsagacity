@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://boxenemy_scene"]
+
+[ext_resource type="Script" path="res://scripts/BoxEnemy.cs" id="1"]
+[ext_resource type="Texture2D" uid="uid://enemy_standing" path="res://assets/sprites/Enemy/standing.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 16.0
+
+[node name="BoxEnemy" type="CharacterBody2D"]
+script = ExtResource("1")
+Speed = 100.0
+Health = 1.0
+BoxSize = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
