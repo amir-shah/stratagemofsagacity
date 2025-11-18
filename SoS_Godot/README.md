@@ -2,10 +2,25 @@
 
 This is a modern Godot 4.x migration of the classic 2009 XNA Game Studio project.
 
+## Platform Support
+
+✅ **Windows** - Native desktop build
+✅ **macOS** - Native desktop build
+✅ **Linux** - Native desktop build
+✅ **Web (HTML5)** - Play in browser! [See Web Deployment Guide](WEB_DEPLOYMENT.md)
+✅ **iOS** - Mobile export (requires Xcode)
+✅ **Android** - Mobile export (requires Android SDK)
+
+The same codebase runs on all platforms!
+
 ## Requirements
 
+### For Desktop/Development
 - **Godot 4.3 or later** with .NET support
 - **.NET 8.0 SDK**
+
+### For Web (Players)
+- Modern web browser with WebAssembly support (Chrome, Firefox, Safari, Edge)
 
 ## Installation
 
@@ -94,13 +109,38 @@ This migration preserves the core gameplay mechanics from the original 2009 XNA 
 - Texture2D loading → Godot's resource system
 - Manual camera → Godot's Camera2D with smoothing
 
-## Building
+## Building & Exporting
 
-The project uses Godot's built-in C# build system. To build:
+### Desktop Build
+
+The project uses Godot's built-in C# build system:
 
 1. Open the project in Godot
 2. Click "Build" in the MSBuild panel (or let it build automatically)
 3. Run the project with F5
+
+### Web Export
+
+Export as HTML5 to play in a browser:
+
+1. Go to `Project → Export`
+2. Select the "Web" preset
+3. Click "Export Project"
+4. Choose output folder (e.g., `build/web/`)
+
+**See [WEB_DEPLOYMENT.md](WEB_DEPLOYMENT.md) for detailed deployment instructions** including:
+- GitHub Pages (free hosting)
+- itch.io (indie game platform)
+- Netlify/Vercel (modern web hosting)
+- Self-hosting options
+
+### Other Platforms
+
+- **macOS**: Export → macOS preset
+- **iOS**: Export → iOS (requires macOS with Xcode)
+- **Android**: Export → Android (requires Android SDK)
+
+All exports use the same codebase with platform-specific optimizations.
 
 ## Troubleshooting
 
