@@ -13,9 +13,39 @@ This is a modern Godot 4.x migration of the classic 2009 XNA Game Studio project
 
 The same codebase runs on all platforms!
 
+## Quick Start Options
+
+### Option 1: Docker (No Installation Required!) 🐳
+
+**Fastest way to get started** - Everything runs in containers, no dependencies to install:
+
+```bash
+# 1. Validate setup
+./scripts/validate-setup.sh
+
+# 2. Test build
+./scripts/test-build.sh
+
+# 3. Run Godot editor
+./scripts/run-editor.sh
+```
+
+**See [DOCKER_SETUP.md](DOCKER_SETUP.md) for full Docker documentation.**
+
+Requires: Docker Desktop only
+
+### Option 2: Native Installation
+
+Install Godot and .NET locally for best performance.
+
 ## Requirements
 
-### For Desktop/Development
+### For Docker Setup (Recommended)
+- **Docker Desktop** - [Download here](https://www.docker.com/products/docker-desktop)
+- 4GB+ RAM
+- 2GB+ disk space
+
+### For Native Development
 - **Godot 4.3 or later** with .NET support
 - **.NET 8.0 SDK**
 
@@ -23,6 +53,25 @@ The same codebase runs on all platforms!
 - Modern web browser with WebAssembly support (Chrome, Firefox, Safari, Edge)
 
 ## Installation
+
+### Using Docker (Zero Dependencies)
+
+```bash
+cd SoS_Godot
+
+# Validate everything is ready
+./scripts/validate-setup.sh
+
+# Launch Godot editor
+./scripts/run-editor.sh
+
+# Or build the game
+./scripts/build-game.sh
+```
+
+See [DOCKER_SETUP.md](DOCKER_SETUP.md) for detailed instructions.
+
+### Using Native Installation
 
 1. **Install Godot 4.3+ (.NET version)**
    - Download from: https://godotengine.org/download
