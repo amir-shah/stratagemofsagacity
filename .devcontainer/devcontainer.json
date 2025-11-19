@@ -1,0 +1,12 @@
+{
+	"name": "SoS Web",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+	"forwardPorts": [8080],
+	"postCreateCommand": "npm install -g http-server",
+	"customizations": {
+		"vscode": {
+			"settings": {},
+			"extensions": ["dbaeumer.vscode-eslint"]
+		}
+	}
+}
