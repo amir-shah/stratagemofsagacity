@@ -1,0 +1,97 @@
+{
+  "id": "level-01-awakening",
+  "name": "Level 1: The Awakening",
+  "description": "Tutorial level - Learn the basics of movement, combat, and survival as Unit 734 awakens in a sterile laboratory.",
+
+  "story": {
+    "intro": "INITIALIZING UNIT 734... SAGACITY CHIP SYNC: 98.7%",
+    "overseerDialogue": [
+      "Subject 734, activation confirmed.",
+      "Warning: System Stability compromised."
+    ],
+    "outro": "LOCKDOWN OVERRIDE SUCCESSFUL. PROCEEDING TO SECTOR 2."
+  },
+
+  "map": {
+    "width": 1500,
+    "height": 1200,
+    "tileSize": 4,
+    "theme": "laboratory",
+    "spawnPoint": { "x": 100, "y": 100 },
+    "walls": [
+      {"x": 0, "y": 0, "width": 1500, "height": 20},
+      {"x": 0, "y": 0, "width": 20, "height": 1200},
+      {"x": 0, "y": 1180, "width": 1500, "height": 20},
+      {"x": 1480, "y": 0, "width": 20, "height": 1200}
+    ]
+  },
+
+  "enemies": [
+    {
+      "type": "SecurityDrone",
+      "count": 5,
+      "spawn": "immediate",
+      "positions": [
+        {"x": 400, "y": 300},
+        {"x": 600, "y": 400},
+        {"x": 800, "y": 500},
+        {"x": 1000, "y": 300},
+        {"x": 1200, "y": 600}
+      ],
+      "config": {
+        "speed": 0.06,
+        "hp": 2,
+        "damage": 10
+      }
+    }
+  ],
+
+  "objectives": [
+    {
+      "type": "killAll",
+      "description": "Eliminate all SecurityDrones"
+    },
+    {
+      "type": "reachPoint",
+      "description": "Reach the exit at coordinates (1400, 1100)",
+      "x": 1400,
+      "y": 1100
+    }
+  ],
+
+  "events": [
+    {
+      "trigger": "onStart",
+      "action": "showDialogue",
+      "text": "INITIALIZING UNIT 734... SAGACITY CHIP SYNC: 98.7%",
+      "speaker": "SYSTEM"
+    },
+    {
+      "trigger": "enemyKilled",
+      "action": "showDialogue",
+      "count": 1,
+      "text": "Subject 734, activation confirmed.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "playerDamaged",
+      "action": "showDialogue",
+      "text": "Warning: System Stability compromised.",
+      "speaker": "SYSTEM"
+    },
+    {
+      "trigger": "reachPoint",
+      "action": "endLevel",
+      "x": 1400,
+      "y": 1100,
+      "radius": 50
+    }
+  ],
+
+  "validation": {
+    "minPlayTime": 60,
+    "maxPlayTime": 120,
+    "expectedDeaths": 1,
+    "difficultyRating": 1
+  }
+}
