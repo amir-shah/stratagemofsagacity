@@ -21,12 +21,20 @@ RUN apt-get update && apt-get install -y \
 
 # Download and install Godot 4.3 Mono/.NET version
 ARG GODOT_VERSION=4.3-stable
-ARG GODOT_PLATFORM=linux.x86_64
+ARG GODOT_PLATFORM=linux_x86_64
 WORKDIR /opt
 RUN wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_mono_${GODOT_PLATFORM}.zip && \
     unzip Godot_v${GODOT_VERSION}_mono_${GODOT_PLATFORM}.zip && \
     rm Godot_v${GODOT_VERSION}_mono_${GODOT_PLATFORM}.zip && \
     mv Godot_v${GODOT_VERSION}_mono_${GODOT_PLATFORM} godot
+
+# Download and install export templates
+RUN wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_mono_export_templates.tpz && \
+    mkdir -p /root/.local/share/godot/export_templates/4.3.stable.mono && \
+    unzip Godot_v${GODOT_VERSION}_mono_export_templates.tpz && \
+    mv templates/* /root/.local/share/godot/export_templates/4.3.stable.mono/ && \
+    rm Godot_v${GODOT_VERSION}_mono_export_templates.tpz && \
+    rm -rf templates
 
 # Add Godot to PATH
 ENV PATH="/opt/godot:${PATH}"
