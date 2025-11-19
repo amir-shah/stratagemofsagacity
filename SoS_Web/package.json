@@ -1,0 +1,17 @@
+{
+  "name": "stratagem-of-sagacity",
+  "version": "0.9.2",
+  "description": "The Oracle Protocol - A cyberpunk top-down shooter with predictive AI",
+  "type": "module",
+  "scripts": {
+    "start": "npx http-server -p 8000 -c-1",
+    "test": "node tests/run-tests.js",
+    "test:level": "node tests/level-validator.js",
+    "test:performance": "node tests/performance-test.js",
+    "validate:all": "node tests/level-validator.js levels/*.json"
+  },
+  "devDependencies": {},
+  "keywords": ["game", "shooter", "cyberpunk", "html5", "canvas"],
+  "author": "Amir Shah",
+  "license": "MIT"
+}

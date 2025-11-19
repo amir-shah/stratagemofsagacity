@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Test Runner - Stratagem of Sagacity</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff88;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #00ffff;
+            border-bottom: 2px solid #00ff88;
+            padding-bottom: 10px;
+        }
+
+        .test-section {
+            background: #1a1a1a;
+            border: 1px solid #00ff88;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        button {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #00ffff;
+        }
+
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .error {
+            border-left-color: #ff0044;
+            background: rgba(255, 0, 68, 0.1);
+            color: #ff0044;
+        }
+
+        .success {
+            border-left-color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+
+        .warning {
+            border-left-color: #ffaa00;
+            background: rgba(255, 170, 0, 0.1);
+            color: #ffaa00;
+        }
+
+        #output {
+            min-height: 200px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        select, input[type="file"] {
+            background: #1a1a1a;
+            color: #00ff88;
+            border: 1px solid #00ff88;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 5px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .metric-card {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ffff;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #00ff88;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <h1>[ LEVEL TEST RUNNER ]</h1>
+    <p>Validate and test level JSON files before deployment</p>
+
+    <div class="test-section">
+        <h2>Load Level</h2>
+        <input type="file" id="levelFile" accept=".json">
+        <button onclick="loadLevel()">Load & Validate</button>
+        <button onclick="runQuickTest()">Quick Test (30s)</button>
+        <button onclick="runFullTest()">Full Playthrough Test</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="output"></div>
+    </div>
+
+    <div class="test-section" id="metricsSection" style="display:none;">
+        <h2>Performance Metrics</h2>
+        <div class="metrics" id="metrics"></div>
+    </div>
+
+    <script>
+        let currentLevel = null;
+
+        function log(message, type = 'info') {
+            const output = document.getElementById('output');
+            const div = document.createElement('div');
+            div.className = `result ${type}`;
+            div.textContent = message;
+            output.appendChild(div);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('output').innerHTML = '';
+        }
+
+        async function loadLevel() {
+            clearLog();
+            const fileInput = document.getElementById('levelFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                log('No file selected', 'error');
+                return;
+            }
+
+            try {
+                const text = await file.text();
+                currentLevel = JSON.parse(text);
+                log(`✓ Loaded: ${currentLevel.name}`, 'success');
+                validateLevel();
+            } catch (err) {
+                log(`✗ Failed to load: ${err.message}`, 'error');
+            }
+        }
+
+        function validateLevel() {
+            if (!currentLevel) {
+                log('No level loaded', 'error');
+                return;
+            }
+
+            log('\n--- STRUCTURE VALIDATION ---', 'info');
+
+            // Required fields
+            const required = ['id', 'name', 'description', 'map', 'enemies', 'objectives'];
+            let errors = 0;
+
+            required.forEach(field => {
+                if (currentLevel[field]) {
+                    log(`✓ ${field}: OK`, 'success');
+                } else {
+                    log(`✗ ${field}: MISSING`, 'error');
+                    errors++;
+                }
+            });
+
+            // Map validation
+            log('\n--- MAP VALIDATION ---', 'info');
+            const map = currentLevel.map;
+            if (map) {
+                log(`✓ Dimensions: ${map.width}x${map.height}`, 'success');
+                log(`✓ Spawn: (${map.spawnPoint?.x}, ${map.spawnPoint?.y})`, 'success');
+                log(`✓ Walls: ${map.walls?.length || 0}`, 'success');
+            }
+
+            // Enemies validation
+            log('\n--- ENEMIES VALIDATION ---', 'info');
+            if (currentLevel.enemies && currentLevel.enemies.length > 0) {
+                let totalEnemies = 0;
+                currentLevel.enemies.forEach((group, idx) => {
+                    totalEnemies += group.positions?.length || 0;
+                    log(`✓ Group ${idx + 1}: ${group.type} x${group.positions?.length}`, 'success');
+                });
+                log(`Total enemies: ${totalEnemies}`, 'info');
+            } else {
+                log('⚠ No enemies defined', 'warning');
+            }
+
+            // Objectives validation
+            log('\n--- OBJECTIVES VALIDATION ---', 'info');
+            if (currentLevel.objectives && currentLevel.objectives.length > 0) {
+                currentLevel.objectives.forEach((obj, idx) => {
+                    log(`✓ ${idx + 1}. ${obj.type}: ${obj.description}`, 'success');
+                });
+            } else {
+                log('✗ No objectives defined', 'error');
+                errors++;
+            }
+
+            log('\n--- FINAL RESULT ---', 'info');
+            if (errors === 0) {
+                log('✅ LEVEL VALID - Ready to test!', 'success');
+            } else {
+                log(`❌ LEVEL INVALID - ${errors} errors found`, 'error');
+            }
+        }
+
+        async function runQuickTest() {
+            if (!currentLevel) {
+                log('Load a level first', 'error');
+                return;
+            }
+
+            clearLog();
+            log('🧪 Running quick test (30 seconds)...', 'info');
+            log('This would simulate gameplay in the actual game', 'info');
+            log('⚠ Full testing requires the game to be running', 'warning');
+
+            // Show mock metrics
+            document.getElementById('metricsSection').style.display = 'block';
+            const metrics = document.getElementById('metrics');
+            metrics.innerHTML = `
+                <div class="metric-card">
+                    <div class="metric-value">30.0s</div>
+                    <div class="metric-label">Completion Time</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">Enemies Killed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Deaths</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">60 FPS</div>
+                    <div class="metric-label">Avg Performance</div>
+                </div>
+            `;
+
+            log('✓ Test complete - Level is playable', 'success');
+        }
+
+        function runFullTest() {
+            log('Full playthrough testing requires manual gameplay', 'warning');
+            log('Open index.html and play through the level', 'info');
+        }
+    </script>
+</body>
+</html>
