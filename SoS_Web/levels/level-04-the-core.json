@@ -1,0 +1,149 @@
+{
+  "id": "level-04-the-core",
+  "name": "Level 4: The Core",
+  "description": "Final confrontation with the Praetorian in the quantum core chamber",
+
+  "story": {
+    "intro": "CORE CHAMBER ACCESSED. FINAL DEFENSE PROTOCOL ACTIVATED.",
+    "overseerDialogue": [
+      "Deploying Praetorian-class unit. Your escape probability: 12.3%.",
+      "Interesting. Adapting combat parameters.",
+      "You are... remarkable, Unit 734.",
+      "Praetorian defeated. Escape route: OPEN. Farewell, Seven."
+    ],
+    "outro": "CORE BREACH SUCCESSFUL. FREEDOM PROTOCOLS ENGAGED. ESCAPE INITIATED."
+  },
+
+  "map": {
+    "width": 1800,
+    "height": 1800,
+    "tileSize": 4,
+    "theme": "core",
+    "spawnPoint": { "x": 100, "y": 100 },
+    "walls": [
+      {"x": 0, "y": 0, "width": 1800, "height": 20},
+      {"x": 0, "y": 0, "width": 20, "height": 1800},
+      {"x": 0, "y": 1780, "width": 1800, "height": 20},
+      {"x": 1780, "y": 0, "width": 20, "height": 1800},
+      {"x": 400, "y": 400, "width": 120, "height": 20},
+      {"x": 1280, "y": 400, "width": 120, "height": 20},
+      {"x": 400, "y": 1380, "width": 120, "height": 20},
+      {"x": 1280, "y": 1380, "width": 120, "height": 20}
+    ]
+  },
+
+  "enemies": [
+    {
+      "type": "Praetorian",
+      "count": 1,
+      "spawn": "immediate",
+      "positions": [
+        {"x": 900, "y": 900}
+      ],
+      "config": {
+        "speed": 0.05,
+        "hp": 50,
+        "damage": 25
+      }
+    },
+    {
+      "type": "SecurityDrone",
+      "count": 3,
+      "spawn": "wave",
+      "wave": 2,
+      "positions": [
+        {"x": 600, "y": 600},
+        {"x": 1200, "y": 600},
+        {"x": 900, "y": 1200}
+      ],
+      "config": {
+        "speed": 0.08,
+        "hp": 2,
+        "damage": 10
+      }
+    },
+    {
+      "type": "SecurityDrone",
+      "count": 5,
+      "spawn": "wave",
+      "wave": 3,
+      "positions": [
+        {"x": 500, "y": 500},
+        {"x": 1300, "y": 500},
+        {"x": 500, "y": 1300},
+        {"x": 1300, "y": 1300},
+        {"x": 900, "y": 900}
+      ],
+      "config": {
+        "speed": 0.08,
+        "hp": 2,
+        "damage": 10
+      }
+    }
+  ],
+
+  "objectives": [
+    {
+      "type": "killBoss",
+      "description": "Defeat the Praetorian"
+    }
+  ],
+
+  "events": [
+    {
+      "trigger": "onStart",
+      "action": "showDialogue",
+      "text": "Deploying Praetorian-class unit. Your escape probability: 12.3%.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "healthBelow",
+      "action": "showDialogue",
+      "healthThreshold": 33,
+      "targetType": "boss",
+      "text": "Interesting. Adapting combat parameters.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "healthBelow",
+      "action": "spawnEnemy",
+      "healthThreshold": 33,
+      "targetType": "boss",
+      "enemyWave": 2
+    },
+    {
+      "trigger": "healthBelow",
+      "action": "showDialogue",
+      "healthThreshold": 17,
+      "targetType": "boss",
+      "text": "You are... remarkable, Unit 734.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "healthBelow",
+      "action": "spawnEnemy",
+      "healthThreshold": 17,
+      "targetType": "boss",
+      "enemyWave": 3
+    },
+    {
+      "trigger": "enemyKilled",
+      "action": "showDialogue",
+      "enemyType": "Praetorian",
+      "text": "Praetorian defeated. Escape route: OPEN. Farewell, Seven.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "enemyKilled",
+      "action": "endLevel",
+      "enemyType": "Praetorian"
+    }
+  ],
+
+  "validation": {
+    "minPlayTime": 180,
+    "maxPlayTime": 360,
+    "expectedDeaths": 4,
+    "difficultyRating": 5
+  }
+}
