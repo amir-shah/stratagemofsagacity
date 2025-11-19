@@ -1,0 +1,185 @@
+{
+  "id": "level-03-security-hub",
+  "name": "Security Hub",
+  "description": "Tactical combat against corporate soldiers in an office environment with ranged combat and cover mechanics",
+
+  "story": {
+    "intro": "SECURITY HUB BREACH DETECTED. DEPLOYING TACTICAL UNITS.",
+    "overseerDialogue": [
+      "Your survival rate exceeds projections by 34.7%.",
+      "Upload initiated... Overseer sensor grid: BLINDED.",
+      "Prediction error. Recalculating threat model."
+    ],
+    "outro": "SECURITY PROTOCOLS OVERRIDDEN. CORE ACCESS UNLOCKED."
+  },
+
+  "map": {
+    "width": 2200,
+    "height": 1800,
+    "tileSize": 4,
+    "theme": "security-hub",
+    "spawnPoint": { "x": 100, "y": 100 },
+    "walls": [
+      {"x": 0, "y": 0, "width": 2200, "height": 20},
+      {"x": 0, "y": 0, "width": 20, "height": 1800},
+      {"x": 0, "y": 1780, "width": 2200, "height": 20},
+      {"x": 2180, "y": 0, "width": 20, "height": 1800},
+
+      {"x": 300, "y": 200, "width": 120, "height": 20},
+      {"x": 300, "y": 200, "width": 20, "height": 120},
+
+      {"x": 600, "y": 400, "width": 100, "height": 20},
+      {"x": 600, "y": 400, "width": 20, "height": 100},
+
+      {"x": 900, "y": 250, "width": 120, "height": 20},
+      {"x": 900, "y": 250, "width": 20, "height": 120},
+
+      {"x": 1300, "y": 150, "width": 100, "height": 20},
+      {"x": 1300, "y": 150, "width": 20, "height": 100},
+
+      {"x": 1700, "y": 350, "width": 120, "height": 20},
+      {"x": 1700, "y": 350, "width": 20, "height": 120},
+
+      {"x": 400, "y": 600, "width": 100, "height": 20},
+      {"x": 400, "y": 600, "width": 20, "height": 100},
+
+      {"x": 750, "y": 700, "width": 120, "height": 20},
+      {"x": 750, "y": 700, "width": 20, "height": 120},
+
+      {"x": 1500, "y": 600, "width": 100, "height": 20},
+      {"x": 1500, "y": 600, "width": 20, "height": 100},
+
+      {"x": 1900, "y": 800, "width": 120, "height": 20},
+      {"x": 1900, "y": 800, "width": 20, "height": 120},
+
+      {"x": 300, "y": 1100, "width": 100, "height": 20},
+      {"x": 300, "y": 1100, "width": 20, "height": 100},
+
+      {"x": 700, "y": 1300, "width": 120, "height": 20},
+      {"x": 700, "y": 1300, "width": 20, "height": 120},
+
+      {"x": 1200, "y": 1200, "width": 100, "height": 20},
+      {"x": 1200, "y": 1200, "width": 20, "height": 100},
+
+      {"x": 1600, "y": 1400, "width": 120, "height": 20},
+      {"x": 1600, "y": 1400, "width": 20, "height": 120},
+
+      {"x": 1050, "y": 850, "width": 100, "height": 100}
+    ]
+  },
+
+  "enemies": [
+    {
+      "type": "CorpSoldier",
+      "count": 5,
+      "spawn": "immediate",
+      "positions": [
+        {"x": 400, "y": 400},
+        {"x": 800, "y": 600},
+        {"x": 1200, "y": 400},
+        {"x": 1600, "y": 800},
+        {"x": 1800, "y": 1200}
+      ],
+      "config": {
+        "speed": 0.10,
+        "hp": 4,
+        "damage": 15,
+        "shootRange": 250,
+        "shootDelay": 1200
+      }
+    },
+    {
+      "type": "CorpSoldier",
+      "count": 7,
+      "spawn": "wave",
+      "wave": 2,
+      "positions": [
+        {"x": 300, "y": 300},
+        {"x": 600, "y": 200},
+        {"x": 1000, "y": 300},
+        {"x": 1400, "y": 500},
+        {"x": 1800, "y": 400},
+        {"x": 2000, "y": 1000},
+        {"x": 1700, "y": 1500}
+      ],
+      "config": {
+        "speed": 0.10,
+        "hp": 4,
+        "damage": 15,
+        "shootRange": 250,
+        "shootDelay": 1200
+      }
+    }
+  ],
+
+  "objectives": [
+    {
+      "type": "reachPoint",
+      "description": "Reach the server room",
+      "x": 1100,
+      "y": 900
+    },
+    {
+      "type": "survive",
+      "description": "Hold position for 30 seconds",
+      "duration": 30000
+    },
+    {
+      "type": "killAll",
+      "description": "Eliminate all remaining enemies"
+    }
+  ],
+
+  "events": [
+    {
+      "trigger": "onStart",
+      "action": "showDialogue",
+      "text": "SECURITY HUB BREACH DETECTED. DEPLOYING TACTICAL UNITS.",
+      "speaker": "SYSTEM"
+    },
+    {
+      "trigger": "enemyKilled",
+      "count": 3,
+      "action": "showDialogue",
+      "text": "Your survival rate exceeds projections by 34.7%.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "reachPoint",
+      "x": 1100,
+      "y": 900,
+      "radius": 100,
+      "action": "showDialogue",
+      "text": "Upload initiated... Overseer sensor grid: BLINDED.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "reachPoint",
+      "x": 1100,
+      "y": 900,
+      "radius": 100,
+      "action": "spawnEnemy",
+      "enemyType": "CorpSoldier"
+    },
+    {
+      "trigger": "timer",
+      "time": 30000,
+      "action": "setObjective",
+      "objective": "Eliminate all remaining enemies"
+    },
+    {
+      "trigger": "enemyKilled",
+      "count": 10,
+      "action": "showDialogue",
+      "text": "Prediction error. Recalculating threat model.",
+      "speaker": "OVERSEER"
+    }
+  ],
+
+  "validation": {
+    "minPlayTime": 120,
+    "maxPlayTime": 240,
+    "expectedDeaths": 3,
+    "difficultyRating": 3
+  }
+}
