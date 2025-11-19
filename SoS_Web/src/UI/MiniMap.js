@@ -39,10 +39,13 @@ export default class MiniMap {
         ctx.lineWidth = 2;
         ctx.strokeRect(x, y, mapW, mapH);
 
-        // Label
-        ctx.fillStyle = '#00ffff';
-        ctx.font = '10px Courier New';
-        ctx.fillText('PREDICTIVE MATRIX', x + 5, y - 5);
+        // Label with timestamp
+        ctx.fillStyle = '#00ff88';
+        ctx.font = 'bold 10px monospace';
+        ctx.fillText('[ PREDICTIVE MATRIX ]', x + 5, y - 15);
+        ctx.font = '9px monospace';
+        ctx.fillStyle = 'rgba(0, 255, 136, 0.7)';
+        ctx.fillText(`T-minus ${(this.futureTime / 1000).toFixed(2)}s`, x + 5, y - 4);
 
         // Draw Walls (Hollow Cyan)
         ctx.fillStyle = 'rgba(0, 255, 255, 0.2)';
