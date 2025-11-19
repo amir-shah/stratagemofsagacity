@@ -1,0 +1,162 @@
+{
+  "id": "level-02-foundry",
+  "name": "The Foundry",
+  "description": "Industrial sector with patrol enemies and environmental hazards",
+
+  "story": {
+    "intro": "SECTOR 2: FOUNDRY. HEAT SIGNATURES DETECTED.",
+    "overseerDialogue": [
+      "The Overseer notes your tactics are... efficient.",
+      "Loader units neutralized. Impressive."
+    ],
+    "outro": "ELEVATOR ACCESS GRANTED. ASCENDING TO SECURITY HUB."
+  },
+
+  "map": {
+    "width": 2000,
+    "height": 1600,
+    "tileSize": 4,
+    "theme": "foundry",
+    "spawnPoint": { "x": 100, "y": 100 },
+    "walls": [
+      {"x": 0, "y": 0, "width": 2000, "height": 20},
+      {"x": 0, "y": 0, "width": 20, "height": 1600},
+      {"x": 0, "y": 1580, "width": 2000, "height": 20},
+      {"x": 1980, "y": 0, "width": 20, "height": 1600},
+      {"x": 400, "y": 300, "width": 20, "height": 400},
+      {"x": 700, "y": 200, "width": 20, "height": 600},
+      {"x": 1000, "y": 400, "width": 20, "height": 500},
+      {"x": 1300, "y": 200, "width": 20, "height": 700},
+      {"x": 1600, "y": 500, "width": 20, "height": 400},
+      {"x": 500, "y": 900, "width": 400, "height": 20},
+      {"x": 1100, "y": 1000, "width": 500, "height": 20},
+      {"x": 200, "y": 1200, "width": 600, "height": 20},
+      {"x": 1400, "y": 1300, "width": 400, "height": 20}
+    ]
+  },
+
+  "enemies": [
+    {
+      "type": "LoaderBot",
+      "count": 4,
+      "spawn": "immediate",
+      "positions": [
+        {"x": 600, "y": 400},
+        {"x": 1000, "y": 800},
+        {"x": 1400, "y": 600},
+        {"x": 800, "y": 1200}
+      ],
+      "config": {
+        "speed": 0.03,
+        "hp": 5,
+        "damage": 20,
+        "patrolRadius": 150
+      }
+    },
+    {
+      "type": "SecurityDrone",
+      "count": 6,
+      "spawn": "immediate",
+      "positions": [
+        {"x": 400, "y": 200},
+        {"x": 800, "y": 600},
+        {"x": 1200, "y": 1000},
+        {"x": 1600, "y": 400},
+        {"x": 300, "y": 1000},
+        {"x": 1700, "y": 1200}
+      ],
+      "config": {
+        "speed": 0.08,
+        "hp": 2,
+        "damage": 10
+      }
+    },
+    {
+      "type": "SecurityDrone",
+      "count": 2,
+      "spawn": "timed",
+      "wave": 1,
+      "positions": [
+        {"x": 500, "y": 500},
+        {"x": 1500, "y": 800}
+      ],
+      "config": {
+        "speed": 0.08,
+        "hp": 2,
+        "damage": 10
+      }
+    }
+  ],
+
+  "objectives": [
+    {
+      "type": "killAll",
+      "description": "Neutralize all LoaderBot units",
+      "enemyType": "LoaderBot"
+    },
+    {
+      "type": "survive",
+      "description": "Survive for 90 seconds",
+      "duration": 90000
+    },
+    {
+      "type": "reachPoint",
+      "description": "Reach the elevator",
+      "x": 1900,
+      "y": 1500
+    }
+  ],
+
+  "events": [
+    {
+      "trigger": "onStart",
+      "action": "showDialogue",
+      "text": "SECTOR 2: FOUNDRY. HEAT SIGNATURES DETECTED.",
+      "speaker": "SYSTEM"
+    },
+    {
+      "trigger": "enemyKilled",
+      "action": "showDialogue",
+      "count": 3,
+      "text": "The Overseer notes your tactics are... efficient.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "timer",
+      "action": "spawnEnemy",
+      "time": 60000,
+      "enemyType": "SecurityDrone",
+      "count": 2
+    },
+    {
+      "trigger": "healthBelow",
+      "action": "showDialogue",
+      "healthThreshold": 50,
+      "text": "System degradation detected.",
+      "speaker": "SYSTEM"
+    },
+    {
+      "trigger": "enemyKilled",
+      "action": "showDialogue",
+      "enemyType": "LoaderBot",
+      "count": 4,
+      "text": "Loader units neutralized. Impressive.",
+      "speaker": "OVERSEER"
+    },
+    {
+      "trigger": "reachPoint",
+      "action": "endLevel",
+      "x": 1900,
+      "y": 1500,
+      "radius": 50,
+      "text": "ELEVATOR ACCESS GRANTED. ASCENDING TO SECURITY HUB."
+    }
+  ],
+
+  "validation": {
+    "minPlayTime": 90,
+    "maxPlayTime": 180,
+    "expectedDeaths": 2,
+    "difficultyRating": 2
+  }
+}
